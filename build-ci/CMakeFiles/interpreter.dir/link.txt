@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/interpreter.dir/link.d CMakeFiles/interpreter.dir/src/behavioral/interpreter/main.cpp.o -o interpreter

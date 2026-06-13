@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/flyweight.dir/link.d CMakeFiles/flyweight.dir/src/structural/flyweight/main.cpp.o -o flyweight

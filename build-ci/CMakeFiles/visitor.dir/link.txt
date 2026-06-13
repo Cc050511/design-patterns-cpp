@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/visitor.dir/link.d CMakeFiles/visitor.dir/src/behavioral/visitor/main.cpp.o -o visitor

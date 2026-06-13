@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/observer.dir/link.d CMakeFiles/observer.dir/src/behavioral/observer/main.cpp.o -o observer

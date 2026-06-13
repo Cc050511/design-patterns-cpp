@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/decorator.dir/link.d CMakeFiles/decorator.dir/src/structural/decorator/main.cpp.o -o decorator

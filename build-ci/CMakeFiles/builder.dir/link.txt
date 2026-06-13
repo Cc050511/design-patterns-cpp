@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/builder.dir/link.d CMakeFiles/builder.dir/src/creational/builder/main.cpp.o -o builder
