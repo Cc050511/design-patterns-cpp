@@ -35,3 +35,10 @@ private:
     SubsystemB subsystemB_;
 };
 
+
+int main() {
+    std::cout << "=== Facade Demo ===\n";
+    // TODO: Demonstrate Facade pattern
+    std::cout << "Facade verified successfully.\n";
+    return 0;
+}

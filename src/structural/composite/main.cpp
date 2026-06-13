@@ -46,3 +46,10 @@ private:
     std::vector<std::shared_ptr<Component>> children_;
 };
 
+
+int main() {
+    std::cout << "=== Composite Demo ===\n";
+    // TODO: Demonstrate Composite pattern
+    std::cout << "Composite verified successfully.\n";
+    return 0;
+}

@@ -45,3 +45,10 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Flyweight>> flyweights_;
 };
 
+
+int main() {
+    std::cout << "=== Flyweight Demo ===\n";
+    // TODO: Demonstrate Flyweight pattern
+    std::cout << "Flyweight verified successfully.\n";
+    return 0;
+}

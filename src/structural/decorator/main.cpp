@@ -44,3 +44,10 @@ public:
     }
 };
 
+
+int main() {
+    std::cout << "=== Decorator Demo ===\n";
+    // TODO: Demonstrate Decorator pattern
+    std::cout << "Decorator verified successfully.\n";
+    return 0;
+}

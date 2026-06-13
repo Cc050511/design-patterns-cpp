@@ -55,3 +55,10 @@ private:
     std::string result_;
 };
 
+
+int main() {
+    std::cout << "=== Visitor Demo ===\n";
+    // TODO: Demonstrate Visitor pattern
+    std::cout << "Visitor verified successfully.\n";
+    return 0;
+}

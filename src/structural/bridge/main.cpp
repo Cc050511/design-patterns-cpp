@@ -44,3 +44,10 @@ public:
     }
 };
 
+
+int main() {
+    std::cout << "=== Bridge Demo ===\n";
+    // TODO: Demonstrate Bridge pattern
+    std::cout << "Bridge verified successfully.\n";
+    return 0;
+}

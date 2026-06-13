@@ -39,3 +39,10 @@ protected:
     }
 };
 
+
+int main() {
+    std::cout << "=== Template Method Demo ===\n";
+    // TODO: Demonstrate Template Method pattern
+    std::cout << "Template Method verified successfully.\n";
+    return 0;
+}

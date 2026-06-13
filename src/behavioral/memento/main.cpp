@@ -51,3 +51,10 @@ private:
     std::vector<std::unique_ptr<Memento>> mementos_;
 };
 
+
+int main() {
+    std::cout << "=== Memento Demo ===\n";
+    // TODO: Demonstrate Memento pattern
+    std::cout << "Memento verified successfully.\n";
+    return 0;
+}

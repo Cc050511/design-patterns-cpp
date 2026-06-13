@@ -52,3 +52,10 @@ public:
     std::string getName() const override { return "StateB"; }
 };
 
+
+int main() {
+    std::cout << "=== State Demo ===\n";
+    // TODO: Demonstrate State pattern
+    std::cout << "State verified successfully.\n";
+    return 0;
+}

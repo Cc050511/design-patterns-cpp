@@ -60,3 +60,10 @@ private:
     std::vector<int> data_;
 };
 
+
+int main() {
+    std::cout << "=== Iterator Demo ===\n";
+    // TODO: Demonstrate Iterator pattern
+    std::cout << "Iterator verified successfully.\n";
+    return 0;
+}

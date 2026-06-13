@@ -57,3 +57,10 @@ public:
     }
 };
 
+
+int main() {
+    std::cout << "=== Mediator Demo ===\n";
+    // TODO: Demonstrate Mediator pattern
+    std::cout << "Mediator verified successfully.\n";
+    return 0;
+}

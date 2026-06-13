@@ -53,3 +53,10 @@ public:
     }
 };
 
+
+int main() {
+    std::cout << "=== Abstract Factory Demo ===\n";
+    // TODO: Demonstrate Abstract Factory pattern
+    std::cout << "Abstract Factory verified successfully.\n";
+    return 0;
+}

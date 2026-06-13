@@ -32,3 +32,14 @@ private:
     ~Singleton() = default;
 };
 
+int main() {
+    std::cout << "=== Singleton Demo ===\n";
+    Singleton& s1 = Singleton::instance();
+    s1.operation();
+    Singleton& s2 = Singleton::instance();
+    s2.operation();
+    std::cout << "Same instance? " << (&s1 == &s2 ? "YES" : "NO") << "\n";
+    std::cout << "Singleton verified successfully.\n";
+    return 0;
+}
+

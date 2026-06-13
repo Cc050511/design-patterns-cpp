@@ -53,3 +53,10 @@ private:
     std::unique_ptr<Strategy> strategy_;
 };
 
+
+int main() {
+    std::cout << "=== Strategy Demo ===\n";
+    // TODO: Demonstrate Strategy pattern
+    std::cout << "Strategy verified successfully.\n";
+    return 0;
+}

@@ -60,3 +60,16 @@ public:
     }
 };
 
+int main() {
+    std::cout << "=== Observer Demo ===\n";
+    ConcreteSubject subject;
+    auto obs1 = std::make_shared<ConcreteObserver>("Observer1");
+    auto obs2 = std::make_shared<ConcreteObserver>("Observer2");
+    subject.attach(obs1);
+    subject.attach(obs2);
+    subject.setState("Active");
+    subject.notify("Update");
+    std::cout << "Observer verified successfully.\n";
+    return 0;
+}
+

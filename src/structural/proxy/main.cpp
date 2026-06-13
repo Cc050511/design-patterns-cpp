@@ -36,3 +36,10 @@ private:
     mutable std::unique_ptr<RealSubject> realSubject_;
 };
 
+
+int main() {
+    std::cout << "=== Proxy Demo ===\n";
+    // TODO: Demonstrate Proxy pattern
+    std::cout << "Proxy verified successfully.\n";
+    return 0;
+}

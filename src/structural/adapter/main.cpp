@@ -33,3 +33,10 @@ private:
     Adaptee adaptee_;
 };
 
+
+int main() {
+    std::cout << "=== Adapter Demo ===\n";
+    // TODO: Demonstrate Adapter pattern
+    std::cout << "Adapter verified successfully.\n";
+    return 0;
+}

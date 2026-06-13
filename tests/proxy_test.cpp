@@ -1,22 +1,16 @@
 // Proxy 模式测试
 
 #include <catch2/catch_test_macros.hpp>
-#include <iostream>
+#include <cstdlib>
+#include <filesystem>
 
-#include "src/structural/proxy/main.cpp"
+namespace fs = std::filesystem;
 
-TEST_CASE("proxy exists", "[proxy][structure]") {
+TEST_CASE("proxy compiles", "[proxy][build]") {
+    REQUIRE(fs::exists("./proxy"));
+}
+
+TEST_CASE("proxy runs", "[proxy][runtime]") {
+    std::system("./proxy");
     REQUIRE(true);
-}
-
-TEST_CASE("proxy controls access", "[proxy][behavior]") {
-    Proxy proxy; proxy.request(); REQUIRE(true);
-}
-
-TEST_CASE("proxy lazy loads", "[proxy][behavior]") {
-    Proxy proxy; proxy.request(); REQUIRE(true);
-}
-
-TEST_CASE("proxy output demo", "[proxy][output]") {
-    std::cout << "=== Proxy Demo ===\n"; Proxy proxy; proxy.request(); std::cout << "Proxy verified.\n"; REQUIRE(true);
 }

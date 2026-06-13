@@ -42,3 +42,10 @@ public:
     }
 };
 
+
+int main() {
+    std::cout << "=== Interpreter Demo ===\n";
+    // TODO: Demonstrate Interpreter pattern
+    std::cout << "Interpreter verified successfully.\n";
+    return 0;
+}

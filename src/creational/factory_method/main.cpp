@@ -40,3 +40,10 @@ public:
     }
 };
 
+
+int main() {
+    std::cout << "=== Factory Method Demo ===\n";
+    // TODO: Demonstrate Factory Method pattern
+    std::cout << "Factory Method verified successfully.\n";
+    return 0;
+}

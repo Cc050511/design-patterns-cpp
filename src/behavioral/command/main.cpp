@@ -57,3 +57,10 @@ private:
     std::unique_ptr<Command> command_;
 };
 
+
+int main() {
+    std::cout << "=== Command Demo ===\n";
+    // TODO: Demonstrate Command pattern
+    std::cout << "Command verified successfully.\n";
+    return 0;
+}

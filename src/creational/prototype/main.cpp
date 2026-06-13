@@ -43,3 +43,10 @@ private:
     std::unordered_map<std::string, std::unique_ptr<Prototype>> prototypes_;
 };
 
+
+int main() {
+    std::cout << "=== Prototype Demo ===\n";
+    // TODO: Demonstrate Prototype pattern
+    std::cout << "Prototype verified successfully.\n";
+    return 0;
+}

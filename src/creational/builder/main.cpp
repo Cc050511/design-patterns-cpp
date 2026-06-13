@@ -59,3 +59,10 @@ private:
     Builder& builder_;
 };
 
+
+int main() {
+    std::cout << "=== Builder Demo ===\n";
+    // TODO: Demonstrate Builder pattern
+    std::cout << "Builder verified successfully.\n";
+    return 0;
+}

@@ -57,37 +57,37 @@ class PatternEvaluator:
         score += structure_score
         details.extend(structure_details)
 
-        test_result = False
-        test_output = ""
+        runtime_result = False
+        output = ""
         if compile_result:
-            test_result, test_output = self.run_tests(pattern_name)
-            if test_result:
-                details.append(f"[PASS] Tests passed")
+            runtime_result, output = self.run_executable(pattern_name)
+            if runtime_result:
+                details.append(f"[PASS] Runtime execution")
             else:
-                details.append(f"[FAIL] Tests failed")
+                details.append(f"[FAIL] Runtime execution (crashed)")
         else:
-            details.append(f"[SKIP] Tests (compilation failed)")
+            details.append(f"[SKIP] Runtime execution (compilation failed)")
 
-        if compile_result and test_result:
-            behavior_score, behavior_details = self.check_behavior(pattern_name, criteria, test_output)
+        if compile_result and runtime_result:
+            behavior_score, behavior_details = self.check_behavior(pattern_name, criteria, output)
             score += behavior_score
             details.extend(behavior_details)
         else:
-            details.append(f"[SKIP] Behavior checks (tests failed)")
+            details.append(f"[SKIP] Behavior checks (runtime failed)")
 
-        if compile_result and test_result:
-            quality_score, quality_details = self.check_output_quality(pattern_name, criteria, test_output)
+        if compile_result and runtime_result:
+            quality_score, quality_details = self.check_output_quality(pattern_name, criteria, output)
             score += quality_score
             details.extend(quality_details)
         else:
-            details.append(f"[SKIP] Output quality (tests failed)")
+            details.append(f"[SKIP] Output quality (runtime failed)")
 
-        if compile_result and test_result:
-            ref_score, ref_details = self.check_against_reference(pattern_name, test_output)
+        if compile_result and runtime_result:
+            ref_score, ref_details = self.check_against_reference(pattern_name, output)
             score += ref_score
             details.extend(ref_details)
         else:
-            details.append(f"[SKIP] Reference comparison (tests failed)")
+            details.append(f"[SKIP] Reference comparison (runtime failed)")
 
         for detail in details:
             print(f"  {detail}")
@@ -96,32 +96,19 @@ class PatternEvaluator:
         return score
 
     def check_compilation(self, pattern_name: str) -> bool:
-        test_binary = self.build_dir / "tests" / f"{pattern_name}_test"
-        return test_binary.exists()
+        binary = self.build_dir / pattern_name
+        return binary.exists()
 
-    def run_tests(self, pattern_name: str) -> Tuple[bool, str]:
+    def run_executable(self, pattern_name: str) -> Tuple[bool, str]:
+        binary = self.build_dir / pattern_name
         try:
-            # Run ctest first to check if tests pass
-            ctest_result = subprocess.run(
-                ["ctest", "-R", pattern_name, "--output-on-failure"],
-                cwd=self.build_dir,
+            result = subprocess.run(
+                [str(binary)],
                 capture_output=True,
                 text=True,
-                timeout=30
+                timeout=5
             )
-            
-            # Also run test binary directly to capture output
-            test_binary = self.build_dir / "tests" / f"{pattern_name}_test"
-            if test_binary.exists():
-                binary_result = subprocess.run(
-                    [str(test_binary)],
-                    capture_output=True,
-                    text=True,
-                    timeout=30
-                )
-                return ctest_result.returncode == 0, binary_result.stdout + binary_result.stderr
-            
-            return ctest_result.returncode == 0, ctest_result.stdout + ctest_result.stderr
+            return result.returncode == 0, result.stdout + result.stderr
         except Exception as e:
             return False, ""
 

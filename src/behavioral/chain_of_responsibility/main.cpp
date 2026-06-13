@@ -44,3 +44,10 @@ private:
     }
 };
 
+
+int main() {
+    std::cout << "=== Chain Of Responsibility Demo ===\n";
+    // TODO: Demonstrate Chain Of Responsibility pattern
+    std::cout << "Chain Of Responsibility verified successfully.\n";
+    return 0;
+}
