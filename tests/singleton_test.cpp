@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("singleton compiles", "[singleton][build]") {
-    REQUIRE(fs::exists("./singleton"));
+    REQUIRE(fs::exists("../singleton"));
 }
 
 TEST_CASE("singleton runs", "[singleton][runtime]") {
-    std::system("./singleton");
+    std::system("../singleton");
     REQUIRE(true);
 }

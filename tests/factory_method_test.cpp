@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("factory_method compiles", "[factory_method][build]") {
-    REQUIRE(fs::exists("./factory_method"));
+    REQUIRE(fs::exists("../factory_method"));
 }
 
 TEST_CASE("factory_method runs", "[factory_method][runtime]") {
-    std::system("./factory_method");
+    std::system("../factory_method");
     REQUIRE(true);
 }

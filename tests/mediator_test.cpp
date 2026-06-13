@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("mediator compiles", "[mediator][build]") {
-    REQUIRE(fs::exists("./mediator"));
+    REQUIRE(fs::exists("../mediator"));
 }
 
 TEST_CASE("mediator runs", "[mediator][runtime]") {
-    std::system("./mediator");
+    std::system("../mediator");
     REQUIRE(true);
 }

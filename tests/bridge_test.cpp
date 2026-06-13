@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("bridge compiles", "[bridge][build]") {
-    REQUIRE(fs::exists("./bridge"));
+    REQUIRE(fs::exists("../bridge"));
 }
 
 TEST_CASE("bridge runs", "[bridge][runtime]") {
-    std::system("./bridge");
+    std::system("../bridge");
     REQUIRE(true);
 }

@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("decorator compiles", "[decorator][build]") {
-    REQUIRE(fs::exists("./decorator"));
+    REQUIRE(fs::exists("../decorator"));
 }
 
 TEST_CASE("decorator runs", "[decorator][runtime]") {
-    std::system("./decorator");
+    std::system("../decorator");
     REQUIRE(true);
 }

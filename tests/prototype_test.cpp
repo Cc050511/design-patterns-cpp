@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("prototype compiles", "[prototype][build]") {
-    REQUIRE(fs::exists("./prototype"));
+    REQUIRE(fs::exists("../prototype"));
 }
 
 TEST_CASE("prototype runs", "[prototype][runtime]") {
-    std::system("./prototype");
+    std::system("../prototype");
     REQUIRE(true);
 }

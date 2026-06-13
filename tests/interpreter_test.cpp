@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("interpreter compiles", "[interpreter][build]") {
-    REQUIRE(fs::exists("./interpreter"));
+    REQUIRE(fs::exists("../interpreter"));
 }
 
 TEST_CASE("interpreter runs", "[interpreter][runtime]") {
-    std::system("./interpreter");
+    std::system("../interpreter");
     REQUIRE(true);
 }

@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("adapter compiles", "[adapter][build]") {
-    REQUIRE(fs::exists("./adapter"));
+    REQUIRE(fs::exists("../adapter"));
 }
 
 TEST_CASE("adapter runs", "[adapter][runtime]") {
-    std::system("./adapter");
+    std::system("../adapter");
     REQUIRE(true);
 }

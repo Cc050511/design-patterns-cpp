@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("flyweight compiles", "[flyweight][build]") {
-    REQUIRE(fs::exists("./flyweight"));
+    REQUIRE(fs::exists("../flyweight"));
 }
 
 TEST_CASE("flyweight runs", "[flyweight][runtime]") {
-    std::system("./flyweight");
+    std::system("../flyweight");
     REQUIRE(true);
 }

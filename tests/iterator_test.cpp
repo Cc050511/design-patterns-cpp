@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("iterator compiles", "[iterator][build]") {
-    REQUIRE(fs::exists("./iterator"));
+    REQUIRE(fs::exists("../iterator"));
 }
 
 TEST_CASE("iterator runs", "[iterator][runtime]") {
-    std::system("./iterator");
+    std::system("../iterator");
     REQUIRE(true);
 }

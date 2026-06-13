@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("composite compiles", "[composite][build]") {
-    REQUIRE(fs::exists("./composite"));
+    REQUIRE(fs::exists("../composite"));
 }
 
 TEST_CASE("composite runs", "[composite][runtime]") {
-    std::system("./composite");
+    std::system("../composite");
     REQUIRE(true);
 }

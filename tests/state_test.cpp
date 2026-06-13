@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("state compiles", "[state][build]") {
-    REQUIRE(fs::exists("./state"));
+    REQUIRE(fs::exists("../state"));
 }
 
 TEST_CASE("state runs", "[state][runtime]") {
-    std::system("./state");
+    std::system("../state");
     REQUIRE(true);
 }

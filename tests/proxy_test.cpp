@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("proxy compiles", "[proxy][build]") {
-    REQUIRE(fs::exists("./proxy"));
+    REQUIRE(fs::exists("../proxy"));
 }
 
 TEST_CASE("proxy runs", "[proxy][runtime]") {
-    std::system("./proxy");
+    std::system("../proxy");
     REQUIRE(true);
 }

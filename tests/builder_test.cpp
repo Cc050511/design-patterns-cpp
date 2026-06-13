@@ -7,10 +7,10 @@
 namespace fs = std::filesystem;
 
 TEST_CASE("builder compiles", "[builder][build]") {
-    REQUIRE(fs::exists("./builder"));
+    REQUIRE(fs::exists("../builder"));
 }
 
 TEST_CASE("builder runs", "[builder][runtime]") {
-    std::system("./builder");
+    std::system("../builder");
     REQUIRE(true);
 }

@@ -28,11 +28,10 @@ function(add_pattern_test PATTERN_NAME SRC_DIR)
         return()
     endif()
 
-    # 若测试文件存在，则编译
+    # 若测试文件存在，则编译（不包含 main.cpp，避免 main() 冲突）
     if(EXISTS ${TEST_CPP})
         add_executable(${PATTERN_NAME}_test
             ${TEST_CPP}
-            ${MAIN_CPP}
         )
         target_compile_features(${PATTERN_NAME}_test PRIVATE cxx_std_23)
         target_link_libraries(${PATTERN_NAME}_test PRIVATE Catch2::Catch2WithMain)
