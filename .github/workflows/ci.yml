@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm
-          pacman -S --noconfirm base-devel cmake ninja gcc clang
+          pacman -S --noconfirm base-devel cmake ninja gcc clang clang-tidy
 
       - name: Configure
         env:
@@ -41,7 +41,7 @@ jobs:
       - name: Build
         run: cmake --build build
 
-      - name: Verify all binaries
+      - name: Verify all binaries exist
         run: |
           echo "=== Verifying 23 design pattern demos ==="
           for binary in singleton factory_method abstract_factory builder prototype adapter bridge composite decorator facade flyweight proxy chain_of_responsibility command interpreter iterator mediator memento observer state strategy template_method visitor; do
@@ -53,6 +53,38 @@ jobs:
             fi
           done
           echo "=== All 23 demos compiled successfully ==="
+
+      - name: Run static structure verification
+        run: |
+          echo "=== Static structure verification ==="
+          bash scripts/verify_structure.sh src
+
+      - name: Run runtime output verification
+        run: |
+          echo "=== Runtime output verification ==="
+          bash scripts/verify_runtime.sh build
+        continue-on-error: true
+
+      - name: Run evaluation engine
+        run: |
+          echo "=== Running Pattern Evaluation Engine ==="
+          python3 scripts/evaluate.py build src
+        continue-on-error: true
+
+      - name: Run evaluation engine
+        run: |
+          echo "=== Running Pattern Evaluation Engine ==="
+          python3 scripts/evaluate.py build src
+        continue-on-error: true
+
+      - name: Build and run tests
+        run: |
+          echo "=== Building Catch2 tests ==="
+          cmake -B build-tests -G Ninja -DBUILD_TESTS=ON
+          cmake --build build-tests
+          cd build-tests
+          ctest --output-on-failure
+        continue-on-error: true
 
   build-macos:
     name: Build (macOS - ${{ matrix.compiler }})
@@ -75,7 +107,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew install cmake ninja
+          brew install cmake ninja clang-tidy
           if [ "${{ matrix.compiler }}" = "gcc" ]; then
             brew install gcc@13
           fi
@@ -89,7 +121,7 @@ jobs:
       - name: Build
         run: cmake --build build
 
-      - name: Verify all binaries
+      - name: Verify all binaries exist
         run: |
           echo "=== Verifying 23 design pattern demos ==="
           for binary in singleton factory_method abstract_factory builder prototype adapter bridge composite decorator facade flyweight proxy chain_of_responsibility command interpreter iterator mediator memento observer state strategy template_method visitor; do
@@ -101,3 +133,23 @@ jobs:
             fi
           done
           echo "=== All 23 demos compiled successfully ==="
+
+      - name: Run static structure verification
+        run: |
+          echo "=== Static structure verification ==="
+          bash scripts/verify_structure.sh src
+
+      - name: Run runtime output verification
+        run: |
+          echo "=== Runtime output verification ==="
+          bash scripts/verify_runtime.sh build
+        continue-on-error: true
+
+      - name: Build and run tests
+        run: |
+          echo "=== Building Catch2 tests ==="
+          cmake -B build-tests -G Ninja -DBUILD_TESTS=ON
+          cmake --build build-tests
+          cd build-tests
+          ctest --output-on-failure
+        continue-on-error: true

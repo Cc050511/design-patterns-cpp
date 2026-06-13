@@ -33,3 +33,10 @@ add_executable(state                   src/behavioral/state/main.cpp)
 add_executable(strategy                src/behavioral/strategy/main.cpp)
 add_executable(template_method         src/behavioral/template_method/main.cpp)
 add_executable(visitor                 src/behavioral/visitor/main.cpp)
+
+# ── Tests ──────────────────────────────────────────────────────────
+option(BUILD_TESTS "Build tests (requires Catch2)" ON)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()

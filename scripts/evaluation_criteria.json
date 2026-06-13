@@ -1,0 +1,1392 @@
+{
+  "patterns": {
+    "singleton": {
+      "name": "Singleton",
+      "category": "creational",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Singleton",
+            "description": "Singleton类定义"
+          },
+          {
+            "pattern": "static\\s+.*instance",
+            "description": "静态实例访问方法"
+          },
+          {
+            "pattern": "delete|private\\s+.*Singleton|constructor",
+            "description": "禁止外部构造"
+          },
+          {
+            "pattern": "delete.*copy|delete|copy",
+            "description": "禁止拷贝"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "instance",
+            "description": "展示实例获取"
+          },
+          {
+            "keyword": "address|same|identical|equal",
+            "description": "展示同一实例地址"
+          },
+          {
+            "keyword": "construct|init|lazy",
+            "description": "展示延迟初始化"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Singleton",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "全局唯一实例，禁止拷贝，延迟初始化"
+    },
+    "factory_method": {
+      "name": "Factory Method",
+      "category": "creational",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Creator|class\\s+\\w*Factory",
+            "description": "Creator类"
+          },
+          {
+            "pattern": "class\\s+\\w*Product",
+            "description": "Product类"
+          },
+          {
+            "pattern": "virtual.*create|virtual.*factory",
+            "description": "虚工厂方法"
+          },
+          {
+            "pattern": "override|virtual",
+            "description": "子类重写"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "create|factory",
+            "description": "展示创建过程"
+          },
+          {
+            "keyword": "Product|Document|Button",
+            "description": "展示产品使用"
+          },
+          {
+            "keyword": "different|type|variant",
+            "description": "展示不同产品类型"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Factory Method",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "子类决定创建哪个对象"
+    },
+    "abstract_factory": {
+      "name": "Abstract Factory",
+      "category": "creational",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Factory",
+            "description": "工厂类"
+          },
+          {
+            "pattern": "class\\s+\\w*Product",
+            "description": "产品类"
+          },
+          {
+            "pattern": "virtual.*create",
+            "description": "多个创建方法"
+          },
+          {
+            "pattern": "family|related|group",
+            "description": "一族产品"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "create|factory",
+            "description": "展示创建过程"
+          },
+          {
+            "keyword": "family|related|group|same",
+            "description": "展示产品族关系"
+          },
+          {
+            "keyword": "different|variant|Win|Mac|Linux",
+            "description": "展示不同工厂"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Abstract Factory",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "创建一族相关对象"
+    },
+    "builder": {
+      "name": "Builder",
+      "category": "creational",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Builder",
+            "description": "Builder类"
+          },
+          {
+            "pattern": "class\\s+\\w*Director",
+            "description": "Director类"
+          },
+          {
+            "pattern": "build|set|step|part",
+            "description": "构建步骤"
+          },
+          {
+            "pattern": "return.*this|Builder&",
+            "description": "链式调用"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "build|step|part",
+            "description": "展示构建步骤"
+          },
+          {
+            "keyword": "Director",
+            "description": "展示Director协调"
+          },
+          {
+            "keyword": "different|variant|custom",
+            "description": "展示不同产品"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Builder",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "分步骤构建复杂对象"
+    },
+    "prototype": {
+      "name": "Prototype",
+      "category": "creational",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Prototype",
+            "description": "Prototype类"
+          },
+          {
+            "pattern": "clone|copy",
+            "description": "clone方法"
+          },
+          {
+            "pattern": "virtual",
+            "description": "虚函数"
+          },
+          {
+            "pattern": "registry|pool|map",
+            "description": "原型管理"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "clone|copy",
+            "description": "展示克隆过程"
+          },
+          {
+            "keyword": "original|prototype",
+            "description": "展示原始对象"
+          },
+          {
+            "keyword": "new|different|address",
+            "description": "展示新实例"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Prototype",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "克隆已有对象"
+    },
+    "adapter": {
+      "name": "Adapter",
+      "category": "structural",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Adapter",
+            "description": "Adapter类"
+          },
+          {
+            "pattern": "class\\s+\\w*Target",
+            "description": "Target接口"
+          },
+          {
+            "pattern": "class\\s+\\w*Adaptee",
+            "description": "Adaptee类"
+          },
+          {
+            "pattern": "request|adapt|convert",
+            "description": "适配方法"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "adapt|convert|request",
+            "description": "展示适配过程"
+          },
+          {
+            "keyword": "old|legacy|incompatible",
+            "description": "展示不兼容接口"
+          },
+          {
+            "keyword": "compatible|works|success",
+            "description": "展示适配成功"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Adapter",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "转换接口以兼容"
+    },
+    "bridge": {
+      "name": "Bridge",
+      "category": "structural",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Abstraction",
+            "description": "Abstraction类"
+          },
+          {
+            "pattern": "class\\s+\\w*Impl|Implementor",
+            "description": "Implementor类"
+          },
+          {
+            "pattern": "composition|delegate|forward",
+            "description": "组合关系"
+          },
+          {
+            "pattern": "virtual",
+            "description": "虚函数"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "abstraction|operation",
+            "description": "展示抽象操作"
+          },
+          {
+            "keyword": "implementation|platform",
+            "description": "展示实现变化"
+          },
+          {
+            "keyword": "independent|separate",
+            "description": "展示独立变化"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Bridge",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "分离抽象与实现"
+    },
+    "composite": {
+      "name": "Composite",
+      "category": "structural",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Component",
+            "description": "Component类"
+          },
+          {
+            "pattern": "class\\s+\\w*Leaf",
+            "description": "Leaf类"
+          },
+          {
+            "pattern": "class\\s+\\w*Composite",
+            "description": "Composite类"
+          },
+          {
+            "pattern": "add|remove|child|children",
+            "description": "子节点管理"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "tree|hierarchy|structure",
+            "description": "展示树形结构"
+          },
+          {
+            "keyword": "leaf|node",
+            "description": "展示叶子节点"
+          },
+          {
+            "keyword": "composite|group",
+            "description": "展示组合节点"
+          },
+          {
+            "keyword": "uniform|same|treat",
+            "description": "展示统一处理"
+          }
+        ],
+        "score_per_item": 11.25
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Composite",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "树形结构的统一处理"
+    },
+    "decorator": {
+      "name": "Decorator",
+      "category": "structural",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Decorator",
+            "description": "Decorator类"
+          },
+          {
+            "pattern": "class\\s+\\w*Component",
+            "description": "Component类"
+          },
+          {
+            "pattern": "wrap|decorate|enhance",
+            "description": "装饰方法"
+          },
+          {
+            "pattern": "virtual",
+            "description": "虚函数"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "decorate|wrap|enhance",
+            "description": "展示装饰过程"
+          },
+          {
+            "keyword": "before|after",
+            "description": "展示前后增强"
+          },
+          {
+            "keyword": "nest|layer|stack",
+            "description": "展示多层装饰"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Decorator",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "动态添加职责"
+    },
+    "facade": {
+      "name": "Facade",
+      "category": "structural",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Facade",
+            "description": "Facade类"
+          },
+          {
+            "pattern": "subsystem|complex",
+            "description": "子系统"
+          },
+          {
+            "pattern": "simplify|unified|interface",
+            "description": "简化接口"
+          },
+          {
+            "pattern": "delegate|forward",
+            "description": "委托调用"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "simple|easy|unified",
+            "description": "展示简化接口"
+          },
+          {
+            "keyword": "complex|subsystem",
+            "description": "展示复杂子系统"
+          },
+          {
+            "keyword": "operation|call",
+            "description": "展示操作调用"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Facade",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "简化复杂子系统的接口"
+    },
+    "flyweight": {
+      "name": "Flyweight",
+      "category": "structural",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Flyweight",
+            "description": "Flyweight类"
+          },
+          {
+            "pattern": "intrinsic|extrinsic",
+            "description": "内外状态分离"
+          },
+          {
+            "pattern": "factory|pool|share",
+            "description": "共享管理"
+          },
+          {
+            "pattern": "map|unordered_map",
+            "description": "对象池"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "share|reuse|pool",
+            "description": "展示共享对象"
+          },
+          {
+            "keyword": "intrinsic|extrinsic",
+            "description": "展示状态分离"
+          },
+          {
+            "keyword": "memory|count|save",
+            "description": "展示节省资源"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Flyweight",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "共享细粒度对象"
+    },
+    "proxy": {
+      "name": "Proxy",
+      "category": "structural",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Proxy",
+            "description": "Proxy类"
+          },
+          {
+            "pattern": "class\\s+\\w*RealSubject",
+            "description": "RealSubject类"
+          },
+          {
+            "pattern": "class\\s+\\w*Subject",
+            "description": "Subject接口"
+          },
+          {
+            "pattern": "access|control|lazy",
+            "description": "访问控制"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "proxy|access|control",
+            "description": "展示代理控制"
+          },
+          {
+            "keyword": "real|heavy|expensive",
+            "description": "展示真实对象"
+          },
+          {
+            "keyword": "lazy|delay|create",
+            "description": "展示延迟创建"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Proxy",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "控制对象访问"
+    },
+    "chain_of_responsibility": {
+      "name": "Chain of Responsibility",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Handler",
+            "description": "Handler类"
+          },
+          {
+            "pattern": "next|successor",
+            "description": "下一处理者"
+          },
+          {
+            "pattern": "handle|process",
+            "description": "处理方法"
+          },
+          {
+            "pattern": "chain|link",
+            "description": "链式结构"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "chain|pass|forward",
+            "description": "展示请求传递"
+          },
+          {
+            "keyword": "handle|process|request",
+            "description": "展示处理过程"
+          },
+          {
+            "keyword": "different|level|priority",
+            "description": "展示不同处理者"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Chain of Responsibility",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "请求沿链传递"
+    },
+    "command": {
+      "name": "Command",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Command",
+            "description": "Command类"
+          },
+          {
+            "pattern": "execute|run",
+            "description": "执行方法"
+          },
+          {
+            "pattern": "undo|reverse",
+            "description": "撤销方法"
+          },
+          {
+            "pattern": "Receiver|Invoker",
+            "description": "Receiver/Invoker"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "execute|run",
+            "description": "展示执行命令"
+          },
+          {
+            "keyword": "undo|reverse|cancel",
+            "description": "展示撤销命令"
+          },
+          {
+            "keyword": "queue|history|macro",
+            "description": "展示命令队列/历史"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Command",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "将请求封装为对象"
+    },
+    "interpreter": {
+      "name": "Interpreter",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Expression",
+            "description": "Expression类"
+          },
+          {
+            "pattern": "interpret|evaluate",
+            "description": "解释方法"
+          },
+          {
+            "pattern": "terminal|nonterminal",
+            "description": "终结符/非终结符"
+          },
+          {
+            "pattern": "tree|AST|node",
+            "description": "语法树"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "interpret|evaluate|parse",
+            "description": "展示解释过程"
+          },
+          {
+            "keyword": "expression|grammar",
+            "description": "展示语法结构"
+          },
+          {
+            "keyword": "result|value|calculate",
+            "description": "展示计算结果"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Interpreter",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "解释自定义语言"
+    },
+    "iterator": {
+      "name": "Iterator",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Iterator",
+            "description": "Iterator类"
+          },
+          {
+            "pattern": "class\\s+\\w*Aggregate|Collection",
+            "description": "Aggregate类"
+          },
+          {
+            "pattern": "next|hasNext|current",
+            "description": "遍历方法"
+          },
+          {
+            "pattern": "begin|end",
+            "description": "begin/end方法"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "iterate|traverse|next",
+            "description": "展示遍历过程"
+          },
+          {
+            "keyword": "element|item|value",
+            "description": "展示访问元素"
+          },
+          {
+            "keyword": "sequential|order",
+            "description": "展示顺序访问"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Iterator",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "顺序访问集合元素"
+    },
+    "mediator": {
+      "name": "Mediator",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Mediator",
+            "description": "Mediator类"
+          },
+          {
+            "pattern": "class\\s+\\w*Colleague",
+            "description": "Colleague类"
+          },
+          {
+            "pattern": "notify|send|receive",
+            "description": "通知方法"
+          },
+          {
+            "pattern": "central|coordinate",
+            "description": "协调中心"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "mediate|coordinate|central",
+            "description": "展示中介协调"
+          },
+          {
+            "keyword": "send|receive|message",
+            "description": "展示通信过程"
+          },
+          {
+            "keyword": "decouple|reduce|interaction",
+            "description": "展示解耦效果"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Mediator",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "集中协调对象交互"
+    },
+    "memento": {
+      "name": "Memento",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Memento",
+            "description": "Memento类"
+          },
+          {
+            "pattern": "class\\s+\\w*Originator",
+            "description": "Originator类"
+          },
+          {
+            "pattern": "class\\s+\\w*Caretaker",
+            "description": "Caretaker类"
+          },
+          {
+            "pattern": "save|restore|state",
+            "description": "状态保存恢复"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "save|snapshot",
+            "description": "展示保存状态"
+          },
+          {
+            "keyword": "restore|recover|undo",
+            "description": "展示恢复状态"
+          },
+          {
+            "keyword": "state|change|different",
+            "description": "展示状态变化"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Memento",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "捕获并恢复对象状态"
+    },
+    "observer": {
+      "name": "Observer",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Subject",
+            "description": "Subject类"
+          },
+          {
+            "pattern": "class\\s+\\w*Observer",
+            "description": "Observer类"
+          },
+          {
+            "pattern": "attach|subscribe|register",
+            "description": "注册方法"
+          },
+          {
+            "pattern": "notify|update|push",
+            "description": "通知方法"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "attach|subscribe|register",
+            "description": "展示注册观察者"
+          },
+          {
+            "keyword": "state|change|update",
+            "description": "展示状态变化"
+          },
+          {
+            "keyword": "notify|update|push",
+            "description": "展示通知更新"
+          },
+          {
+            "keyword": "multiple|many|all",
+            "description": "展示一对多通知"
+          }
+        ],
+        "score_per_item": 11.25
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Observer",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "一对多的依赖通知"
+    },
+    "state": {
+      "name": "State",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*State",
+            "description": "State类"
+          },
+          {
+            "pattern": "class\\s+\\w*Context",
+            "description": "Context类"
+          },
+          {
+            "pattern": "handle|transition|change",
+            "description": "状态转换方法"
+          },
+          {
+            "pattern": "virtual",
+            "description": "虚函数"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "state|context",
+            "description": "展示状态"
+          },
+          {
+            "keyword": "change|transition|switch",
+            "description": "展示状态转换"
+          },
+          {
+            "keyword": "behavior|action|different",
+            "description": "展示不同行为"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "State",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "状态驱动的行为变化"
+    },
+    "strategy": {
+      "name": "Strategy",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Strategy",
+            "description": "Strategy类"
+          },
+          {
+            "pattern": "class\\s+\\w*Context",
+            "description": "Context类"
+          },
+          {
+            "pattern": "algorithm|execute|perform",
+            "description": "算法方法"
+          },
+          {
+            "pattern": "virtual",
+            "description": "虚函数"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "strategy|algorithm",
+            "description": "展示策略"
+          },
+          {
+            "keyword": "switch|change|different",
+            "description": "展示策略切换"
+          },
+          {
+            "keyword": "result|output|behavior",
+            "description": "展示不同结果"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Strategy",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "算法族，可互换"
+    },
+    "template_method": {
+      "name": "Template Method",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Abstract",
+            "description": "AbstractClass"
+          },
+          {
+            "pattern": "templateMethod|algorithm",
+            "description": "模板方法"
+          },
+          {
+            "pattern": "step|hook|primitive",
+            "description": "步骤/钩子"
+          },
+          {
+            "pattern": "virtual",
+            "description": "虚函数"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "template|skeleton|framework",
+            "description": "展示算法骨架"
+          },
+          {
+            "keyword": "step|hook|customize",
+            "description": "展示自定义步骤"
+          },
+          {
+            "keyword": "different|variant|override",
+            "description": "展示不同实现"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Template Method",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "定义算法骨架，子类填充步骤"
+    },
+    "visitor": {
+      "name": "Visitor",
+      "category": "behavioral",
+      "scores": {
+        "compilation": 10,
+        "structure": 25,
+        "behavior": 45,
+        "output_quality": 10,
+        "reference": 10
+      },
+      "structure_checks": {
+        "must_have": [
+          {
+            "pattern": "class\\s+\\w*Visitor",
+            "description": "Visitor类"
+          },
+          {
+            "pattern": "class\\s+\\w*Element",
+            "description": "Element类"
+          },
+          {
+            "pattern": "accept|visit",
+            "description": "accept/visit方法"
+          },
+          {
+            "pattern": "double dispatch|dispatch",
+            "description": "双重分发"
+          }
+        ],
+        "score_per_item": 6.25
+      },
+      "behavior_checks": {
+        "must_have": [
+          {
+            "keyword": "visit|accept",
+            "description": "展示访问过程"
+          },
+          {
+            "keyword": "element|node|object",
+            "description": "展示被访问对象"
+          },
+          {
+            "keyword": "operation|behavior",
+            "description": "展示新操作"
+          }
+        ],
+        "score_per_item": 15
+      },
+      "output_quality": {
+        "min_lines": 5,
+        "required_keywords": [
+          "Visitor",
+          "Demo"
+        ],
+        "forbidden_keywords": [
+          "TODO"
+        ]
+      },
+      "description": "对一组对象执行新操作"
+    }
+  }
+}
