@@ -1,3 +1,7 @@
+#include <iostream>
+#include <memory>
+#include <string>
+
 /**
  * Interpreter — 解释器模式
  * ==========================
@@ -16,10 +20,6 @@
  * 参考角色:
  *   AbstractExpression (Expr) ← TerminalExpr (Number), NonTerminalExpr (Add, Sub, Mul)
  */
-
-#include <iostream>
-#include <memory>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

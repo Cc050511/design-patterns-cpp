@@ -1,3 +1,7 @@
+#include <iostream>
+#include <memory>
+#include <string>
+
 /**
  * Chain of Responsibility — 职责链模式
  * ======================================
@@ -19,10 +23,6 @@
  * 参考角色:
  *   Handler (Approver) ← ConcreteHandler (Employee → Manager → Director → CEO)
  */
-
-#include <iostream>
-#include <memory>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

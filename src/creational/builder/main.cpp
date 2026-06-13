@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 /**
  * Builder — 建造者模式
  * ======================
@@ -20,9 +23,6 @@
  *   Director (ResumeDirector)
  *   Product (Resume)
  */
-
-#include <iostream>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

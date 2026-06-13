@@ -1,3 +1,7 @@
+#include <iostream>
+#include <memory>
+#include <vector>
+
 /**
  * Observer — 观察者模式
  * ========================
@@ -21,10 +25,6 @@
  *   Subject (WeatherData) ← ConcreteSubject
  *   Observer (Display)    ← ConcreteObserver (CurrentConditions, Statistics, Alert)
  */
-
-#include <iostream>
-#include <memory>
-#include <vector>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

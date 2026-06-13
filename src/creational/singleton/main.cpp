@@ -1,3 +1,5 @@
+#include <iostream>
+
 /**
  * Singleton — 单例模式
  * ======================
@@ -35,8 +37,6 @@
 // 参考实现: .reference/singleton.cpp
 // 评测命令: python3 scripts/evaluate.py build src
 // ============================================
-
-#include <iostream>
 
 // TODO: 实现你的 Singleton
 

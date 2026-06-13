@@ -1,3 +1,7 @@
+#include <iostream>
+#include <memory>
+#include <string>
+
 /**
  * Bridge — 桥接模式
  * ===================
@@ -13,10 +17,6 @@
  *   Abstraction (RemoteControl) ← RefinedAbstraction (AdvancedRemote)
  *   Implementor (Device) ← ConcreteImplementor (TV, Radio)
  */
-
-#include <iostream>
-#include <memory>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

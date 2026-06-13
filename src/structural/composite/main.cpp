@@ -1,3 +1,8 @@
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+
 /**
  * Composite — 组合模式
  * ======================
@@ -13,11 +18,6 @@
  * 参考角色:
  *   Component (FileSystemNode) ← Leaf (File), Composite (Folder)
  */
-
-#include <iostream>
-#include <memory>
-#include <string>
-#include <vector>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

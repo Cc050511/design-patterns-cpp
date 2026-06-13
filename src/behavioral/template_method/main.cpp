@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 /**
  * Template Method — 模板方法模式
  * ================================
@@ -25,9 +28,6 @@
  *   - Template Method: 用继承，在编译期确定算法骨架
  *   - Strategy: 用组合，在运行期切换整个算法
  */
-
-#include <iostream>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

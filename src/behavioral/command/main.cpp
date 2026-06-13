@@ -1,3 +1,7 @@
+#include <iostream>
+#include <memory>
+#include <string>
+
 /**
  * Command — 命令模式
  * ===================
@@ -22,10 +26,6 @@
  *   Receiver (Light)
  *   Invoker (RemoteControl)
  */
-
-#include <iostream>
-#include <memory>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

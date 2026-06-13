@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 /**
  * Adapter — 适配器模式
  * ======================
@@ -15,9 +18,6 @@
  *   Target (IMediaPlayer) ← Adapter (FormatAdapter)
  *   Adaptee (LegacyPlayer)
  */
-
-#include <iostream>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

@@ -1,3 +1,8 @@
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+
 /**
  * Mediator — 中介者模式
  * =======================
@@ -22,11 +27,6 @@
  *   Mediator (IChatRoom) ← ConcreteMediator (ChatRoom)
  *   Colleague (User) ← 各 User 只通过 ChatRoom 通信
  */
-
-#include <iostream>
-#include <memory>
-#include <string>
-#include <vector>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

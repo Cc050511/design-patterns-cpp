@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 /**
  * Facade — 外观模式
  * ===================
@@ -14,9 +17,6 @@
  *   Facade (HomeTheaterFacade)
  *   Subsystem classes (DVDPlayer, Projector, Amplifier, Lights)
  */
-
-#include <iostream>
-#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)
