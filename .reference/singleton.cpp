@@ -1,58 +1,44 @@
 #include <iostream>
-#include <memory>
-#include <string>
 
-// === Singleton Demo ===
-// Ensures a class has only one instance and provides global access to it.
+/**
+ * Singleton 参考实现
+ * 展示 Meyer's Singleton 模式
+ */
 
-class Logger {
-public:
-    Logger(const Logger&) = delete;
-    Logger& operator=(const Logger&) = delete;
-    Logger(Logger&&) = delete;
-    Logger& operator=(Logger&&) = delete;
+class Singleton {
+  public:
+    Singleton(const Singleton&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
+    Singleton(Singleton&&) = delete;
+    Singleton& operator=(Singleton&&) = delete;
 
-    static Logger& getInstance() {
-        static Logger instance;
+    static Singleton& instance() {
+        static Singleton instance;
         return instance;
     }
 
-    void log(const std::string& message) {
-        std::cout << "[LOG] " << message << std::endl;
+    void operation() const {
+        std::cout << "Singleton instance address: " << this << "\n";
     }
 
-    void setLevel(const std::string& level) {
-        level_ = level;
-        std::cout << "[LOG] Level set to: " << level_ << std::endl;
+  private:
+    Singleton() {
+        std::cout << "Singleton constructed (lazy init)\n";
     }
-
-    std::string getLevel() const { return level_; }
-
-private:
-    Logger() : level_("INFO") {
-        std::cout << "Logger instance created" << std::endl;
-    }
-    ~Logger() = default;
-
-    std::string level_;
+    ~Singleton() = default;
 };
 
 int main() {
-    std::cout << "=== Singleton Demo ===" << std::endl;
+    std::cout << "=== Singleton Demo ===\n";
+    std::cout << "Getting instance 1...\n";
+    Singleton& s1 = Singleton::instance();
+    s1.operation();
 
-    Logger& logger1 = Logger::getInstance();
-    logger1.log("First message");
-    logger1.setLevel("DEBUG");
+    std::cout << "Getting instance 2...\n";
+    Singleton& s2 = Singleton::instance();
+    s2.operation();
 
-    Logger& logger2 = Logger::getInstance();
-    logger2.log("Second message");
-
-    std::cout << "Same instance? " << (&logger1 == &logger2 ? "YES" : "NO") << std::endl;
-    std::cout << "Level from logger2: " << logger2.getLevel() << std::endl;
-
-    Logger::getInstance().log("Third message");
-    Logger::getInstance().log("Singleton pattern ensures one instance");
-
-    std::cout << "=== End Singleton Demo ===" << std::endl;
+    std::cout << "Same instance? " << (&s1 == &s2 ? "YES" : "NO") << "\n";
+    std::cout << "Singleton verified successfully.\n";
     return 0;
 }

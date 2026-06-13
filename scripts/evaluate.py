@@ -121,7 +121,26 @@ class PatternEvaluator:
 
         main_file = main_files[0]
         with open(main_file, 'r') as f:
-            content = f.read()
+            lines = f.readlines()
+        
+        # 移除注释行（// 和 /* */）后再匹配，确保只匹配实际代码
+        code_lines = []
+        in_multiline_comment = False
+        for line in lines:
+            stripped = line.strip()
+            if in_multiline_comment:
+                if '*/' in stripped:
+                    in_multiline_comment = False
+                continue
+            if stripped.startswith('//'):
+                continue
+            if stripped.startswith('/*'):
+                if '*/' not in stripped:
+                    in_multiline_comment = True
+                continue
+            code_lines.append(line)
+        
+        code_content = ''.join(code_lines)
 
         structure_checks = criteria['structure_checks']
         score_per_item = structure_checks.get('score_per_item', 6.25)
@@ -129,7 +148,7 @@ class PatternEvaluator:
         for check in structure_checks['must_have']:
             pattern = check['pattern']
             description = check['description']
-            if re.search(pattern, content, re.IGNORECASE):
+            if re.search(pattern, code_content, re.IGNORECASE):
                 score += score_per_item
                 details.append(f"[PASS] Structure: {description} (+{score_per_item:.1f})")
             else:
@@ -140,6 +159,20 @@ class PatternEvaluator:
     def check_behavior(self, pattern_name: str, criteria: Dict, output: str) -> Tuple[int, List[str]]:
         score = 0
         details = []
+        
+        # 检查输出是否只有模板预设的文本（没有实际实现内容）
+        lines = [line.strip() for line in output.split('\n') if line.strip()]
+        non_framework_lines = []
+        for line in lines:
+            # 排除模板预设的行
+            if any(fw in line for fw in ['===', 'Demo ===', 'verified successfully.', 'TODO']):
+                continue
+            non_framework_lines.append(line)
+        
+        # 如果输出全是模板预设的，行为检查直接得0分
+        if len(non_framework_lines) < 2:
+            details.append(f"[FAIL] Behavior: 输出中只有模板预设文本，无实际实现内容")
+            return 0, details
         
         behavior_checks = criteria['behavior_checks']
         score_per_item = behavior_checks.get('score_per_item', 15)

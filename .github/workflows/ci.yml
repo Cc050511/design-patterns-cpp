@@ -71,12 +71,6 @@ jobs:
           python3 scripts/evaluate.py build src
         continue-on-error: true
 
-      - name: Run evaluation engine
-        run: |
-          echo "=== Running Pattern Evaluation Engine ==="
-          python3 scripts/evaluate.py build src
-        continue-on-error: true
-
       - name: Build and run tests
         run: |
           echo "=== Building Catch2 tests ==="
