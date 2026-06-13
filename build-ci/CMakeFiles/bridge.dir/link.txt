@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/bridge.dir/link.d CMakeFiles/bridge.dir/src/structural/bridge/main.cpp.o -o bridge

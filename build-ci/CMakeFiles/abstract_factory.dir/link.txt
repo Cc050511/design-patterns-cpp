@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/abstract_factory.dir/link.d CMakeFiles/abstract_factory.dir/src/creational/abstract_factory/main.cpp.o -o abstract_factory

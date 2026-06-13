@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/composite.dir/link.d CMakeFiles/composite.dir/src/structural/composite/main.cpp.o -o composite

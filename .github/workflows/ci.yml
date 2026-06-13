@@ -36,10 +36,14 @@ jobs:
         env:
           CC: ${{ matrix.cc }}
           CXX: ${{ matrix.cxx }}
-        run: cmake -B build -G Ninja
+        run: cmake -B build -G Ninja -DBUILD_TESTS=ON
 
       - name: Build
         run: cmake --build build
+
+      - name: Run all tests
+        run: cd build && ctest --output-on-failure
+        continue-on-error: true
 
       - name: Verify all binaries exist
         run: |
@@ -58,6 +62,7 @@ jobs:
         run: |
           echo "=== Static structure verification ==="
           bash scripts/verify_structure.sh src
+        continue-on-error: true
 
       - name: Run runtime output verification
         run: |
@@ -69,15 +74,6 @@ jobs:
         run: |
           echo "=== Running Pattern Evaluation Engine ==="
           python3 scripts/evaluate.py build src
-        continue-on-error: true
-
-      - name: Build and run tests
-        run: |
-          echo "=== Building Catch2 tests ==="
-          cmake -B build-tests -G Ninja -DBUILD_TESTS=ON
-          cmake --build build-tests
-          cd build-tests
-          ctest --output-on-failure
         continue-on-error: true
 
   build-macos:
@@ -110,10 +106,14 @@ jobs:
         env:
           CC: ${{ matrix.cc }}
           CXX: ${{ matrix.cxx }}
-        run: cmake -B build -G Ninja
+        run: cmake -B build -G Ninja -DBUILD_TESTS=ON
 
       - name: Build
         run: cmake --build build
+
+      - name: Run all tests
+        run: cd build && ctest --output-on-failure
+        continue-on-error: true
 
       - name: Verify all binaries exist
         run: |

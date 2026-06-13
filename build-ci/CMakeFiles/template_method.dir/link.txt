@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/template_method.dir/link.d CMakeFiles/template_method.dir/src/behavioral/template_method/main.cpp.o -o template_method
