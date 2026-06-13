@@ -98,7 +98,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew install cmake ninja clang-tidy
+          brew install cmake ninja
           if [ "${{ matrix.compiler }}" = "gcc" ]; then
             brew install gcc@13
           fi
