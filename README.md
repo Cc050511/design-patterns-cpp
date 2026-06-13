@@ -52,6 +52,20 @@ cmake -B build && cmake --build build
 
 ## 学习路线建议
 
+## 评测系统
+
+完成 demo 后，使用评测系统验证实现是否符合 GoF 标准：
+
+```bash
+# 编译并评测
+cmake -B build && cmake --build build
+python3 scripts/evaluate.py build src
+```
+
+详细评测说明：[docs/evaluation-system.md](docs/evaluation-system.md)
+
+## 学习路线建议
+
 1. **第一轮** — 创建型 → 结构型 → 行为型，顺序通读
 2. **第二轮** — 对比相似模式：Strategy vs State、Decorator vs Proxy、Factory Method vs Abstract Factory
 3. **第三轮** — 组合使用：在一个场景里混合多个模式
