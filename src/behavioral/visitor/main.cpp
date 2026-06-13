@@ -1,37 +1,57 @@
 /**
- * Visitor — 访问者模式
+ * Visitor — 对一组对象执行新操作
  * 意图: 对一组对象执行新操作
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/visitor.cpp
  */
 
-#include <iostream>
 #include <memory>
-#include <vector>
+#include <string>
+#include <iostream>
 
-// TODO: 实现 Element 接口
-// class Element { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteElement
-// class ConcreteElement : public Element { ... };
+class Element;
 
-// TODO: 实现 Visitor 接口
-// class Visitor { ... };
+class Visitor {
+public:
+    virtual ~Visitor() = default;
+    virtual void visitConcreteElementA(const Element& element) = 0;
+    virtual void visitConcreteElementB(const Element& element) = 0;
+};
 
-// TODO: 实现 ConcreteVisitor
-// class ConcreteVisitor : public Visitor { ... };
+class Element {
+public:
+    virtual ~Element() = default;
+    virtual void accept(Visitor& visitor) const = 0;
+    virtual std::string getName() const = 0;
+};
 
-int main() {
-    std::cout << "=== Visitor Demo ===\n";
-    
-    // TODO: 创建元素和访问者，执行访问
-    // std::vector<std::unique_ptr<Element>> elements;
-    // elements.push_back(std::make_unique<ConcreteElement>());
-    // ConcreteVisitor visitor;
-    // for (auto& elem : elements) {
-    //     elem->accept(visitor);
-    // }
-    
-    std::cout << "Visitor verified successfully.\n";
-    return 0;
-}
+class ConcreteElementA : public Element {
+public:
+    void accept(Visitor& visitor) const override {
+        visitor.visitConcreteElementA(*this);
+    }
+    std::string getName() const override { return "ElementA"; }
+};
+
+class ConcreteElementB : public Element {
+public:
+    void accept(Visitor& visitor) const override {
+        visitor.visitConcreteElementB(*this);
+    }
+    std::string getName() const override { return "ElementB"; }
+};
+
+class ConcreteVisitor : public Visitor {
+public:
+    void visitConcreteElementA(const Element& element) override {
+        // TODO: Visit element A
+    }
+    void visitConcreteElementB(const Element& element) override {
+        // TODO: Visit element B
+    }
+private:
+    std::string result_;
+};
+

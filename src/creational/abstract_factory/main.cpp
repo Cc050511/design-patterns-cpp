@@ -1,33 +1,55 @@
 /**
- * Abstract Factory — 抽象工厂模式
+ * Abstract Factory — 创建一族相关对象
  * 意图: 创建一族相关对象
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/abstract_factory.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <iostream>
 
-// TODO: 实现 AbstractProduct 接口
-// class AbstractProduct { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteProduct
-// class ConcreteProduct : public AbstractProduct { ... };
+class AbstractProductA {
+public:
+    virtual ~AbstractProductA() = default;
+    virtual void useA() const = 0;
+};
 
-// TODO: 实现 AbstractFactory 接口
-// class AbstractFactory { ... };
+class AbstractProductB {
+public:
+    virtual ~AbstractProductB() = default;
+    virtual void useB() const = 0;
+};
 
-// TODO: 实现 ConcreteFactory
-// class ConcreteFactory : public AbstractFactory { ... };
+class ConcreteProductA : public AbstractProductA {
+public:
+    void useA() const override {
+        // TODO: Implement product A behavior
+    }
+};
 
-int main() {
-    std::cout << "=== Abstract Factory Demo ===\n";
-    
-    // TODO: 创建工厂并生产一族产品
-    // std::unique_ptr<AbstractFactory> factory = std::make_unique<ConcreteFactory>();
-    // auto productA = factory->createProductA();
-    // auto productB = factory->createProductB();
-    
-    std::cout << "Abstract Factory verified successfully.\n";
-    return 0;
-}
+class ConcreteProductB : public AbstractProductB {
+public:
+    void useB() const override {
+        // TODO: Implement product B behavior
+    }
+};
+
+class AbstractFactory {
+public:
+    virtual ~AbstractFactory() = default;
+    virtual std::unique_ptr<AbstractProductA> createProductA() const = 0;
+    virtual std::unique_ptr<AbstractProductB> createProductB() const = 0;
+};
+
+class ConcreteFactory : public AbstractFactory {
+public:
+    std::unique_ptr<AbstractProductA> createProductA() const override {
+        return std::make_unique<ConcreteProductA>();
+    }
+    std::unique_ptr<AbstractProductB> createProductB() const override {
+        return std::make_unique<ConcreteProductB>();
+    }
+};
+

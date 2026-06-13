@@ -1,33 +1,46 @@
 /**
- * Decorator — 装饰器模式
+ * Decorator — 动态添加职责
  * 意图: 动态添加职责
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/decorator.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <iostream>
 
-// TODO: 实现 Component 接口
-// class Component { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteComponent
-// class ConcreteComponent : public Component { ... };
+class Component {
+public:
+    virtual ~Component() = default;
+    virtual void operation() const = 0;
+};
 
-// TODO: 实现 Decorator
-// class Decorator : public Component { ... };
+class ConcreteComponent : public Component {
+public:
+    void operation() const override {
+        // TODO: Implement base operation
+    }
+};
 
-// TODO: 实现 ConcreteDecorator
-// class ConcreteDecorator : public Decorator { ... };
+class Decorator : public Component {
+public:
+    explicit Decorator(std::unique_ptr<Component> component) 
+        : component_(std::move(component)) {}
+    void operation() const override {
+        // TODO: Add behavior before/after delegating
+        component_->operation();
+    }
+protected:
+    std::unique_ptr<Component> component_;
+};
 
-int main() {
-    std::cout << "=== Decorator Demo ===\n";
-    
-    // TODO: 创建装饰器链
-    // std::unique_ptr<Component> component = std::make_unique<ConcreteComponent>();
-    // component = std::make_unique<ConcreteDecorator>(std::move(component));
-    // component->operation();
-    
-    std::cout << "Decorator verified successfully.\n";
-    return 0;
-}
+class ConcreteDecorator : public Decorator {
+public:
+    using Decorator::Decorator;
+    void operation() const override {
+        // TODO: Add specific decoration
+        Decorator::operation();
+    }
+};
+

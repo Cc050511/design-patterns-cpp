@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Design Pattern Evaluation Engine v2"""
+"""Design Pattern Evaluation Engine v3 - Test-based evaluation"""
 
 import json
 import os
@@ -22,7 +22,8 @@ class PatternEvaluator:
 
     def evaluate_all(self) -> Dict:
         print("=" * 70)
-        print("Design Pattern Evaluation Engine v2")
+        print("Design Pattern Evaluation Engine v3")
+        print("Templates removed main() - tests validate class implementations")
         print("=" * 70)
         print()
 
@@ -56,36 +57,37 @@ class PatternEvaluator:
         score += structure_score
         details.extend(structure_details)
 
-        output = ""
+        test_result = False
+        test_output = ""
         if compile_result:
-            runtime_result, output = self.check_runtime(pattern_name)
-            if runtime_result:
-                details.append(f"[PASS] Runtime execution")
+            test_result, test_output = self.run_tests(pattern_name)
+            if test_result:
+                details.append(f"[PASS] Tests passed")
             else:
-                details.append(f"[FAIL] Runtime execution (crashed)")
+                details.append(f"[FAIL] Tests failed")
         else:
-            details.append(f"[SKIP] Runtime execution (compilation failed)")
+            details.append(f"[SKIP] Tests (compilation failed)")
 
-        if compile_result and runtime_result:
-            behavior_score, behavior_details = self.check_behavior(pattern_name, criteria, output)
+        if compile_result and test_result:
+            behavior_score, behavior_details = self.check_behavior(pattern_name, criteria, test_output)
             score += behavior_score
             details.extend(behavior_details)
         else:
-            details.append(f"[SKIP] Behavior checks (runtime failed)")
+            details.append(f"[SKIP] Behavior checks (tests failed)")
 
-        if compile_result and runtime_result:
-            quality_score, quality_details = self.check_output_quality(pattern_name, criteria, output)
+        if compile_result and test_result:
+            quality_score, quality_details = self.check_output_quality(pattern_name, criteria, test_output)
             score += quality_score
             details.extend(quality_details)
         else:
-            details.append(f"[SKIP] Output quality (runtime failed)")
+            details.append(f"[SKIP] Output quality (tests failed)")
 
-        if compile_result and runtime_result:
-            ref_score, ref_details = self.check_against_reference(pattern_name, output)
+        if compile_result and test_result:
+            ref_score, ref_details = self.check_against_reference(pattern_name, test_output)
             score += ref_score
             details.extend(ref_details)
         else:
-            details.append(f"[SKIP] Reference comparison (runtime failed)")
+            details.append(f"[SKIP] Reference comparison (tests failed)")
 
         for detail in details:
             print(f"  {detail}")
@@ -94,19 +96,32 @@ class PatternEvaluator:
         return score
 
     def check_compilation(self, pattern_name: str) -> bool:
-        binary = self.build_dir / pattern_name
-        return binary.exists()
+        test_binary = self.build_dir / "tests" / f"{pattern_name}_test"
+        return test_binary.exists()
 
-    def check_runtime(self, pattern_name: str) -> Tuple[bool, str]:
-        binary = self.build_dir / pattern_name
+    def run_tests(self, pattern_name: str) -> Tuple[bool, str]:
         try:
-            result = subprocess.run(
-                [str(binary)],
+            # Run ctest first to check if tests pass
+            ctest_result = subprocess.run(
+                ["ctest", "-R", pattern_name, "--output-on-failure"],
+                cwd=self.build_dir,
                 capture_output=True,
                 text=True,
-                timeout=5
+                timeout=30
             )
-            return result.returncode == 0, result.stdout + result.stderr
+            
+            # Also run test binary directly to capture output
+            test_binary = self.build_dir / "tests" / f"{pattern_name}_test"
+            if test_binary.exists():
+                binary_result = subprocess.run(
+                    [str(test_binary)],
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+                return ctest_result.returncode == 0, binary_result.stdout + binary_result.stderr
+            
+            return ctest_result.returncode == 0, ctest_result.stdout + ctest_result.stderr
         except Exception as e:
             return False, ""
 
@@ -123,7 +138,6 @@ class PatternEvaluator:
         with open(main_file, 'r') as f:
             lines = f.readlines()
         
-        # 移除注释行（// 和 /* */）后再匹配，确保只匹配实际代码
         code_lines = []
         in_multiline_comment = False
         for line in lines:
@@ -160,20 +174,6 @@ class PatternEvaluator:
         score = 0
         details = []
         
-        # 检查输出是否只有模板预设的文本（没有实际实现内容）
-        lines = [line.strip() for line in output.split('\n') if line.strip()]
-        non_framework_lines = []
-        for line in lines:
-            # 排除模板预设的行
-            if any(fw in line for fw in ['===', 'Demo ===', 'verified successfully.', 'TODO']):
-                continue
-            non_framework_lines.append(line)
-        
-        # 如果输出全是模板预设的，行为检查直接得0分
-        if len(non_framework_lines) < 2:
-            details.append(f"[FAIL] Behavior: 输出中只有模板预设文本，无实际实现内容")
-            return 0, details
-        
         behavior_checks = criteria['behavior_checks']
         score_per_item = behavior_checks.get('score_per_item', 15)
         
@@ -186,7 +186,7 @@ class PatternEvaluator:
                 score += score_per_item
                 details.append(f"[PASS] Behavior: {description} (+{score_per_item:.1f})")
             else:
-                details.append(f"[FAIL] Behavior: {description} (missing in output)")
+                details.append(f"[FAIL] Behavior: {description} (missing in test output)")
 
         return score, details
 

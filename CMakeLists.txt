@@ -5,36 +5,8 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# ── Creational Patterns ──────────────────────────────────────────────
-add_executable(singleton        src/creational/singleton/main.cpp)
-add_executable(factory_method   src/creational/factory_method/main.cpp)
-add_executable(abstract_factory src/creational/abstract_factory/main.cpp)
-add_executable(builder          src/creational/builder/main.cpp)
-add_executable(prototype        src/creational/prototype/main.cpp)
-
-# ── Structural Patterns ──────────────────────────────────────────────
-add_executable(adapter     src/structural/adapter/main.cpp)
-add_executable(bridge      src/structural/bridge/main.cpp)
-add_executable(composite   src/structural/composite/main.cpp)
-add_executable(decorator   src/structural/decorator/main.cpp)
-add_executable(facade      src/structural/facade/main.cpp)
-add_executable(flyweight   src/structural/flyweight/main.cpp)
-add_executable(proxy       src/structural/proxy/main.cpp)
-
-# ── Behavioral Patterns ──────────────────────────────────────────────
-add_executable(chain_of_responsibility src/behavioral/chain_of_responsibility/main.cpp)
-add_executable(command                 src/behavioral/command/main.cpp)
-add_executable(interpreter             src/behavioral/interpreter/main.cpp)
-add_executable(iterator                src/behavioral/iterator/main.cpp)
-add_executable(mediator                src/behavioral/mediator/main.cpp)
-add_executable(memento                 src/behavioral/memento/main.cpp)
-add_executable(observer                src/behavioral/observer/main.cpp)
-add_executable(state                   src/behavioral/state/main.cpp)
-add_executable(strategy                src/behavioral/strategy/main.cpp)
-add_executable(template_method         src/behavioral/template_method/main.cpp)
-add_executable(visitor                 src/behavioral/visitor/main.cpp)
-
 # ── Tests ──────────────────────────────────────────────────────────
+# Templates no longer contain main() - tests validate class implementations
 option(BUILD_TESTS "Build tests (requires Catch2)" ON)
 if(BUILD_TESTS)
     enable_testing()

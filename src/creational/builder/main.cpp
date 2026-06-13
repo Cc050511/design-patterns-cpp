@@ -1,34 +1,61 @@
 /**
- * Builder — 建造者模式
+ * Builder — 分步骤构建复杂对象
  * 意图: 分步骤构建复杂对象
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/builder.cpp
  */
 
-#include <iostream>
+#include <memory>
 #include <string>
+#include <iostream>
 
-// TODO: 实现 Product 类
-// class Product { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 Builder 接口
-// class Builder { ... };
+class Product {
+public:
+    void setPartA(const std::string& part) { partA_ = part; }
+    void setPartB(const std::string& part) { partB_ = part; }
+    void show() const {
+        // TODO: Display product parts
+    }
+private:
+    std::string partA_;
+    std::string partB_;
+};
 
-// TODO: 实现 ConcreteBuilder
-// class ConcreteBuilder : public Builder { ... };
+class Builder {
+public:
+    virtual ~Builder() = default;
+    virtual void buildPartA() = 0;
+    virtual void buildPartB() = 0;
+    virtual std::unique_ptr<Product> getResult() = 0;
+};
 
-// TODO: 实现 Director 类
-// class Director { ... };
+class ConcreteBuilder : public Builder {
+public:
+    ConcreteBuilder() : product_(std::make_unique<Product>()) {}
+    void buildPartA() override {
+        // TODO: Build part A
+    }
+    void buildPartB() override {
+        // TODO: Build part B
+    }
+    std::unique_ptr<Product> getResult() override {
+        return std::move(product_);
+    }
+private:
+    std::unique_ptr<Product> product_;
+};
 
-int main() {
-    std::cout << "=== Builder Demo ===\n";
-    
-    // TODO: 创建 Builder 和 Director，构建产品
-    // ConcreteBuilder builder;
-    // Director director(builder);
-    // auto product = director.construct();
-    // product->show();
-    
-    std::cout << "Builder verified successfully.\n";
-    return 0;
-}
+class Director {
+public:
+    explicit Director(Builder& builder) : builder_(builder) {}
+    void construct() {
+        // TODO: Define construction steps
+        builder_.buildPartA();
+        builder_.buildPartB();
+    }
+private:
+    Builder& builder_;
+};
+

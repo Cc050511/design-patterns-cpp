@@ -1,30 +1,44 @@
 /**
- * Interpreter — 解释器模式
+ * Interpreter — 解释自定义语言
  * 意图: 解释自定义语言
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/interpreter.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <string>
+#include <iostream>
 
-// TODO: 实现 AbstractExpression
-// class AbstractExpression { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 TerminalExpression
-// class TerminalExpression : public AbstractExpression { ... };
+class Context {
+public:
+    explicit Context(const std::string& input) : input_(input) {}
+    std::string getInput() const { return input_; }
+    void setOutput(const std::string& output) { output_ = output; }
+    std::string getOutput() const { return output_; }
+private:
+    std::string input_;
+    std::string output_;
+};
 
-// TODO: 实现 NonterminalExpression
-// class NonterminalExpression : public AbstractExpression { ... };
+class Expression {
+public:
+    virtual ~Expression() = default;
+    virtual void interpret(Context& context) const = 0;
+};
 
-int main() {
-    std::cout << "=== Interpreter Demo ===\n";
-    
-    // TODO: 构建语法树并解释
-    // std::unique_ptr<AbstractExpression> expr = ...;
-    // int result = expr->interpret();
-    // std::cout << "Result: " << result << "\n";
-    
-    std::cout << "Interpreter verified successfully.\n";
-    return 0;
-}
+class TerminalExpression : public Expression {
+public:
+    void interpret(Context& context) const override {
+        // TODO: Interpret terminal expression
+    }
+};
+
+class NonTerminalExpression : public Expression {
+public:
+    void interpret(Context& context) const override {
+        // TODO: Interpret non-terminal expression (recursive)
+    }
+};
+

@@ -1,27 +1,45 @@
 /**
- * Prototype — 原型模式
+ * Prototype — 克隆已有对象
  * 意图: 克隆已有对象
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/prototype.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <unordered_map>
+#include <string>
+#include <iostream>
 
-// TODO: 实现 Prototype 基类
-// class Prototype { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcretePrototype
-// class ConcretePrototype : public Prototype { ... };
+class Prototype {
+public:
+    virtual ~Prototype() = default;
+    virtual std::unique_ptr<Prototype> clone() const = 0;
+    virtual void operation() const = 0;
+};
 
-int main() {
-    std::cout << "=== Prototype Demo ===\n";
-    
-    // TODO: 创建原型并克隆
-    // std::unique_ptr<Prototype> original = std::make_unique<ConcretePrototype>();
-    // auto clone = original->clone();
-    // clone->show();
-    
-    std::cout << "Prototype verified successfully.\n";
-    return 0;
-}
+class ConcretePrototype : public Prototype {
+public:
+    std::unique_ptr<Prototype> clone() const override {
+        // TODO: Implement deep copy
+        return std::make_unique<ConcretePrototype>(*this);
+    }
+    void operation() const override {
+        // TODO: Implement operation
+    }
+};
+
+class PrototypeManager {
+public:
+    void registerPrototype(const std::string& name, std::unique_ptr<Prototype> prototype) {
+        // TODO: Register prototype
+    }
+    std::unique_ptr<Prototype> create(const std::string& name) {
+        // TODO: Create from prototype
+        return nullptr;
+    }
+private:
+    std::unordered_map<std::string, std::unique_ptr<Prototype>> prototypes_;
+};
+

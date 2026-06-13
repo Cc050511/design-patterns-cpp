@@ -1,30 +1,55 @@
 /**
- * Strategy — 策略模式
+ * Strategy — 算法族，可互换
  * 意图: 算法族，可互换
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/strategy.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <vector>
+#include <string>
+#include <iostream>
 
-// TODO: 实现 Strategy 接口
-// class Strategy { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteStrategy
-// class ConcreteStrategy : public Strategy { ... };
+class Strategy {
+public:
+    virtual ~Strategy() = default;
+    virtual void execute(const std::vector<int>& data) const = 0;
+    virtual std::string getName() const = 0;
+};
 
-// TODO: 实现 Context 类
-// class Context { ... };
+class ConcreteStrategyA : public Strategy {
+public:
+    void execute(const std::vector<int>& data) const override {
+        // TODO: Implement algorithm A
+    }
+    std::string getName() const override { return "StrategyA"; }
+};
 
-int main() {
-    std::cout << "=== Strategy Demo ===\n";
-    
-    // TODO: 创建上下文，切换策略
-    // Context context;
-    // context.setStrategy(std::make_unique<ConcreteStrategy>());
-    // context.execute();
-    
-    std::cout << "Strategy verified successfully.\n";
-    return 0;
-}
+class ConcreteStrategyB : public Strategy {
+public:
+    void execute(const std::vector<int>& data) const override {
+        // TODO: Implement algorithm B
+    }
+    std::string getName() const override { return "StrategyB"; }
+};
+
+class Context {
+public:
+    explicit Context(std::unique_ptr<Strategy> strategy) : strategy_(std::move(strategy)) {}
+    void setStrategy(std::unique_ptr<Strategy> strategy) {
+        strategy_ = std::move(strategy);
+    }
+    void executeStrategy(const std::vector<int>& data) const {
+        if (strategy_) {
+            strategy_->execute(data);
+        }
+    }
+    std::string getStrategyName() const {
+        return strategy_ ? strategy_->getName() : "none";
+    }
+private:
+    std::unique_ptr<Strategy> strategy_;
+};
+

@@ -1,30 +1,47 @@
 /**
- * Flyweight — 享元模式
+ * Flyweight — 共享细粒度对象
  * 意图: 共享细粒度对象
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/flyweight.cpp
  */
 
-#include <iostream>
 #include <memory>
-#include <string>
 #include <unordered_map>
+#include <string>
+#include <iostream>
 
-// TODO: 实现 Flyweight 类
-// class Flyweight { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 FlyweightFactory
-// class FlyweightFactory { ... };
+class Flyweight {
+public:
+    virtual ~Flyweight() = default;
+    virtual void operation(const std::string& extrinsicState) const = 0;
+};
 
-int main() {
-    std::cout << "=== Flyweight Demo ===\n";
-    
-    // TODO: 使用工厂创建共享对象
-    // FlyweightFactory factory;
-    // auto fly1 = factory.getFlyweight("A");
-    // auto fly2 = factory.getFlyweight("A");
-    // fly1->operation();
-    
-    std::cout << "Flyweight verified successfully.\n";
-    return 0;
-}
+class ConcreteFlyweight : public Flyweight {
+public:
+    explicit ConcreteFlyweight(const std::string& intrinsicState) 
+        : intrinsicState_(intrinsicState) {}
+    void operation(const std::string& extrinsicState) const override {
+        // TODO: Use intrinsic and extrinsic state
+    }
+private:
+    std::string intrinsicState_;
+};
+
+class FlyweightFactory {
+public:
+    std::shared_ptr<Flyweight> getFlyweight(const std::string& key) {
+        // TODO: Return existing or create new flyweight
+        auto it = flyweights_.find(key);
+        if (it == flyweights_.end()) {
+            auto fw = std::make_shared<ConcreteFlyweight>(key);
+            flyweights_[key] = fw;
+            return fw;
+        }
+        return it->second;
+    }
+private:
+    std::unordered_map<std::string, std::shared_ptr<Flyweight>> flyweights_;
+};
+

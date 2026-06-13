@@ -1,28 +1,46 @@
 /**
- * Chain of Responsibility — 职责链模式
+ * Chain Of Responsibility — 请求沿链传递
  * 意图: 请求沿链传递
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/chain_of_responsibility.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <string>
+#include <iostream>
 
-// TODO: 实现 Handler 抽象类
-// class Handler { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteHandler
-// class ConcreteHandler : public Handler { ... };
+class Handler {
+public:
+    virtual ~Handler() = default;
+    void setNext(std::shared_ptr<Handler> next) {
+        next_ = next;
+    }
+    virtual void handle(const std::string& request) const {
+        // TODO: Handle request or pass to next
+        if (next_) {
+            next_->handle(request);
+        }
+    }
+protected:
+    std::shared_ptr<Handler> next_;
+};
 
-int main() {
-    std::cout << "=== Chain of Responsibility Demo ===\n";
-    
-    // TODO: 创建职责链并传递请求
-    // auto h1 = std::make_unique<ConcreteHandler>();
-    // auto h2 = std::make_unique<ConcreteHandler>();
-    // h1->setNext(h2.get());
-    // h1->handleRequest(100);
-    
-    std::cout << "Chain of Responsibility verified successfully.\n";
-    return 0;
-}
+class ConcreteHandler : public Handler {
+public:
+    void handle(const std::string& request) const override {
+        // TODO: Check if can handle, otherwise pass to next
+        if (canHandle(request)) {
+            // Process request
+        } else {
+            Handler::handle(request);
+        }
+    }
+private:
+    bool canHandle(const std::string& request) const {
+        // TODO: Check condition
+        return false;
+    }
+};
+

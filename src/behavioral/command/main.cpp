@@ -1,35 +1,59 @@
 /**
- * Command — 命令模式
+ * Command — 将请求封装为对象
  * 意图: 将请求封装为对象
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/command.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <iostream>
 
-// TODO: 实现 Command 接口
-// class Command { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteCommand
-// class ConcreteCommand : public Command { ... };
+class Receiver {
+public:
+    void action() const {
+        // TODO: Implement receiver action
+    }
+    void undo() const {
+        // TODO: Implement undo action
+    }
+};
 
-// TODO: 实现 Receiver
-// class Receiver { ... };
+class Command {
+public:
+    virtual ~Command() = default;
+    virtual void execute() const = 0;
+    virtual void undo() const = 0;
+};
 
-// TODO: 实现 Invoker
-// class Invoker { ... };
+class ConcreteCommand : public Command {
+public:
+    explicit ConcreteCommand(Receiver& receiver) : receiver_(receiver) {}
+    void execute() const override {
+        // TODO: Execute command
+        receiver_.action();
+    }
+    void undo() const override {
+        // TODO: Undo command
+        receiver_.undo();
+    }
+private:
+    Receiver& receiver_;
+};
 
-int main() {
-    std::cout << "=== Command Demo ===\n";
-    
-    // TODO: 创建命令并执行
-    // Receiver receiver;
-    // auto cmd = std::make_unique<ConcreteCommand>(receiver);
-    // Invoker invoker;
-    // invoker.setCommand(cmd.get());
-    // invoker.execute();
-    
-    std::cout << "Command verified successfully.\n";
-    return 0;
-}
+class Invoker {
+public:
+    void setCommand(std::unique_ptr<Command> command) {
+        command_ = std::move(command);
+    }
+    void executeCommand() const {
+        if (command_) command_->execute();
+    }
+    void undoCommand() const {
+        if (command_) command_->undo();
+    }
+private:
+    std::unique_ptr<Command> command_;
+};
+

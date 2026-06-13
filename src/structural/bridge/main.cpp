@@ -1,33 +1,46 @@
 /**
- * Bridge — 桥接模式
+ * Bridge — 分离抽象与实现
  * 意图: 分离抽象与实现
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/bridge.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <iostream>
 
-// TODO: 实现 Implementor 接口
-// class Implementor { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteImplementor
-// class ConcreteImplementor : public Implementor { ... };
+class Implementor {
+public:
+    virtual ~Implementor() = default;
+    virtual void operationImpl() const = 0;
+};
 
-// TODO: 实现 Abstraction
-// class Abstraction { ... };
+class ConcreteImplementor : public Implementor {
+public:
+    void operationImpl() const override {
+        // TODO: Implement platform-specific operation
+    }
+};
 
-// TODO: 实现 RefinedAbstraction
-// class RefinedAbstraction : public Abstraction { ... };
+class Abstraction {
+public:
+    explicit Abstraction(std::unique_ptr<Implementor> impl) : impl_(std::move(impl)) {}
+    virtual ~Abstraction() = default;
+    virtual void operation() const {
+        // TODO: Delegate to implementor
+        impl_->operationImpl();
+    }
+protected:
+    std::unique_ptr<Implementor> impl_;
+};
 
-int main() {
-    std::cout << "=== Bridge Demo ===\n";
-    
-    // TODO: 创建抽象和实现，展示独立变化
-    // std::unique_ptr<Implementor> impl = std::make_unique<ConcreteImplementor>();
-    // std::unique_ptr<Abstraction> abs = std::make_unique<RefinedAbstraction>(impl);
-    // abs->operation();
-    
-    std::cout << "Bridge verified successfully.\n";
-    return 0;
-}
+class RefinedAbstraction : public Abstraction {
+public:
+    using Abstraction::Abstraction;
+    void operation() const override {
+        // TODO: Extended behavior
+        Abstraction::operation();
+    }
+};
+

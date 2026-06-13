@@ -1,5 +1,5 @@
 /**
- * Template Method — 模板方法模式
+ * Template Method — 定义算法骨架，子类填充步骤
  * 意图: 定义算法骨架，子类填充步骤
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/template_method.cpp
@@ -7,19 +7,35 @@
 
 #include <iostream>
 
-// TODO: 实现 AbstractClass
-// class AbstractClass { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 ConcreteClass
-// class ConcreteClass : public AbstractClass { ... };
+class AbstractClass {
+public:
+    virtual ~AbstractClass() = default;
+    void templateMethod() const {
+        // TODO: Define algorithm skeleton
+        step1();
+        step2();
+        hook();
+    }
+protected:
+    virtual void step1() const = 0;
+    virtual void step2() const = 0;
+    virtual void hook() const {
+        // Optional hook with default behavior
+    }
+};
 
-int main() {
-    std::cout << "=== Template Method Demo ===\n";
-    
-    // TODO: 使用模板方法
-    // ConcreteClass obj;
-    // obj.templateMethod();
-    
-    std::cout << "Template Method verified successfully.\n";
-    return 0;
-}
+class ConcreteClass : public AbstractClass {
+protected:
+    void step1() const override {
+        // TODO: Implement step 1
+    }
+    void step2() const override {
+        // TODO: Implement step 2
+    }
+    void hook() const override {
+        // TODO: Override hook (optional)
+    }
+};
+

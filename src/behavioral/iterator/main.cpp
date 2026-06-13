@@ -1,33 +1,62 @@
 /**
- * Iterator — 迭代器模式
+ * Iterator — 顺序访问集合元素
  * 意图: 顺序访问集合元素
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/iterator.cpp
  */
 
-#include <iostream>
 #include <memory>
+#include <vector>
+#include <iostream>
 
-// TODO: 实现 Aggregate 接口
-// class Aggregate { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 Iterator 接口
-// class Iterator { ... };
+class Iterator {
+public:
+    virtual ~Iterator() = default;
+    virtual bool hasNext() const = 0;
+    virtual int next() = 0;
+};
 
-// TODO: 实现 ConcreteAggregate 和 ConcreteIterator
-// class ConcreteAggregate : public Aggregate { ... };
-// class ConcreteIterator : public Iterator { ... };
+class Aggregate {
+public:
+    virtual ~Aggregate() = default;
+    virtual std::unique_ptr<Iterator> createIterator() const = 0;
+    virtual void add(int value) = 0;
+    virtual size_t size() const = 0;
+    virtual int get(size_t index) const = 0;
+};
 
-int main() {
-    std::cout << "=== Iterator Demo ===\n";
-    
-    // TODO: 创建集合并遍历
-    // ConcreteAggregate aggregate;
-    // auto it = aggregate.createIterator();
-    // while (it->hasNext()) {
-    //     std::cout << it->next() << "\n";
-    // }
-    
-    std::cout << "Iterator verified successfully.\n";
-    return 0;
-}
+class ConcreteIterator : public Iterator {
+public:
+    explicit ConcreteIterator(const Aggregate& aggregate) 
+        : aggregate_(aggregate), index_(0) {}
+    bool hasNext() const override {
+        return index_ < aggregate_.size();
+    }
+    int next() override {
+        return aggregate_.get(index_++);
+    }
+private:
+    const Aggregate& aggregate_;
+    size_t index_;
+};
+
+class ConcreteAggregate : public Aggregate {
+public:
+    void add(int value) override {
+        data_.push_back(value);
+    }
+    size_t size() const override {
+        return data_.size();
+    }
+    int get(size_t index) const override {
+        return data_[index];
+    }
+    std::unique_ptr<Iterator> createIterator() const override {
+        return std::make_unique<ConcreteIterator>(*this);
+    }
+private:
+    std::vector<int> data_;
+};
+

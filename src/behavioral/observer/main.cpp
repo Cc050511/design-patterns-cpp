@@ -1,34 +1,62 @@
 /**
- * Observer — 观察者模式
+ * Observer — 一对多的依赖通知
  * 意图: 一对多的依赖通知
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/observer.cpp
  */
 
-#include <iostream>
 #include <memory>
 #include <vector>
+#include <string>
+#include <iostream>
 
-// TODO: 实现 Subject 接口
-// class Subject { ... };
+// TODO: 完成以下类实现
 
-// TODO: 实现 Observer 接口
-// class Observer { ... };
+class Observer {
+public:
+    virtual ~Observer() = default;
+    virtual void update(const std::string& state) = 0;
+};
 
-// TODO: 实现 ConcreteSubject 和 ConcreteObserver
-// class ConcreteSubject : public Subject { ... };
-// class ConcreteObserver : public Observer { ... };
+class Subject {
+public:
+    virtual ~Subject() = default;
+    void attach(std::shared_ptr<Observer> observer) {
+        observers_.push_back(observer);
+    }
+    void detach(std::shared_ptr<Observer> observer) {
+        // TODO: Remove observer
+    }
+    void notify(const std::string& state) {
+        for (auto& observer : observers_) {
+            observer->update(state);
+        }
+    }
+    virtual void setState(const std::string& state) {
+        state_ = state;
+        notify(state);
+    }
+    std::string getState() const { return state_; }
+protected:
+    std::vector<std::shared_ptr<Observer>> observers_;
+    std::string state_;
+};
 
-int main() {
-    std::cout << "=== Observer Demo ===\n";
-    
-    // TODO: 创建主题和观察者，注册并通知
-    // ConcreteSubject subject;
-    // auto obs1 = std::make_unique<ConcreteObserver>();
-    // subject.attach(obs1.get());
-    // subject.setState("New State");
-    // subject.notify();
-    
-    std::cout << "Observer verified successfully.\n";
-    return 0;
-}
+class ConcreteObserver : public Observer {
+public:
+    explicit ConcreteObserver(const std::string& name) : name_(name) {}
+    void update(const std::string& state) override {
+        // TODO: React to state change
+    }
+private:
+    std::string name_;
+};
+
+class ConcreteSubject : public Subject {
+public:
+    void setState(const std::string& state) override {
+        // TODO: Custom state logic
+        Subject::setState(state);
+    }
+};
+
