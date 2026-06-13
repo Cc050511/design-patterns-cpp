@@ -1,8 +1,13 @@
 /**
  * Singleton — 全局唯一实例，禁止拷贝，延迟初始化
- * 意图: 全局唯一实例，禁止拷贝，延迟初始化
- * 评测: python3 scripts/evaluate.py build src
- * 参考: .reference/singleton.cpp
+ *
+ * 实现要求：
+ * 1. 设计并实现此设计模式的完整结构
+ * 2. 在 main() 中演示该模式的核心交互
+ * 3. 输出需包含模式名称，展示关键行为
+ *
+ * 评测：python3 scripts/evaluate.py build src
+ * 参考：.reference/singleton.cpp
  */
 
 #include <iostream>

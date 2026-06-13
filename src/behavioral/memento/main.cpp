@@ -1,8 +1,13 @@
 /**
- * Memento — 模式意图
- * 意图: 请实现此设计模式
- * 评测: python3 scripts/evaluate.py build src
- * 参考: .reference/memento.cpp
+ * Memento — 捕获并恢复对象状态
+ *
+ * 实现要求：
+ * 1. 设计并实现此设计模式的完整结构
+ * 2. 在 main() 中演示该模式的核心交互
+ * 3. 输出需包含模式名称，展示关键行为
+ *
+ * 评测：python3 scripts/evaluate.py build src
+ * 参考：.reference/memento.cpp
  */
 
 #include <memory>
