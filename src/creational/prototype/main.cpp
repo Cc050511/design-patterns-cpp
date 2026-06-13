@@ -1,11 +1,11 @@
 /**
  * Prototype — 克隆已有对象
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Prototype接口 + 具体原型 + clone方法 + 原型管理
+ * 评测要点：
+ *   - 结构：Prototype类, clone()方法, virtual, 原型管理
+ *   - 行为：展示克隆过程、原始对象、新实例（地址不同）
+ *   - 输出：包含 "Prototype", "clone", "original", "new" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/prototype.cpp
  */

@@ -1,11 +1,11 @@
 /**
  * Factory Method — 子类决定创建哪个对象
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Product接口 + Creator抽象类 + 具体产品和具体工厂
+ * 评测要点：
+ *   - 结构：Product类, Creator类, virtual createProduct(), override
+ *   - 行为：展示创建过程、产品使用、不同产品类型
+ *   - 输出：包含 "Factory Method", "create", "Product", "different" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/factory_method.cpp
  */

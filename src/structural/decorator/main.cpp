@@ -1,11 +1,11 @@
 /**
  * Decorator — 动态添加职责
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Component接口 + ConcreteComponent + Decorator基类 + 具体装饰者
+ * 评测要点：
+ *   - 结构：Decorator类, Component类, 装饰方法, virtual
+ *   - 行为：展示装饰过程、前后增强、多层装饰（嵌套）
+ *   - 输出：包含 "Decorator", "decorate", "before", "after", "nest" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/decorator.cpp
  */

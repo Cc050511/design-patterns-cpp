@@ -1,11 +1,11 @@
 /**
  * Bridge — 分离抽象与实现
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Abstraction类 + Implementor接口 + 具体实现 + 组合关系
+ * 评测要点：
+ *   - 结构：Abstraction类, Implementor类, 组合关系, virtual方法
+ *   - 行为：展示抽象操作、实现变化、独立变化
+ *   - 输出：包含 "Bridge", "abstraction", "implementation", "independent" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/bridge.cpp
  */

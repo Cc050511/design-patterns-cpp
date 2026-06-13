@@ -1,11 +1,11 @@
 /**
  * Strategy — 算法族，可互换
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Strategy接口 + 具体策略 + Context类 + 策略切换
+ * 评测要点：
+ *   - 结构：Strategy类, Context类, 算法方法, virtual
+ *   - 行为：展示策略选择、策略切换、不同结果
+ *   - 输出：包含 "Strategy", "strategy", "switch", "result" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/strategy.cpp
  */

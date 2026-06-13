@@ -1,11 +1,11 @@
 /**
  * Flyweight — 共享细粒度对象
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Flyweight接口 + 具体享元 + FlyweightFactory + 内外状态分离
+ * 评测要点：
+ *   - 结构：Flyweight类, 状态分离, 共享管理, 对象池
+ *   - 行为：展示共享对象、状态分离、节省资源
+ *   - 输出：包含 "Flyweight", "share", "intrinsic", "memory" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/flyweight.cpp
  */

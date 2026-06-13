@@ -1,11 +1,11 @@
 /**
  * Memento — 捕获并恢复对象状态
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Memento类 + Originator + Caretaker + 状态保存恢复
+ * 评测要点：
+ *   - 结构：Memento类, Originator类, Caretaker类, 状态保存恢复
+ *   - 行为：展示保存状态、恢复状态、状态变化
+ *   - 输出：包含 "Memento", "save", "restore", "state" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/memento.cpp
  */

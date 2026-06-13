@@ -1,11 +1,11 @@
 /**
  * Composite — 树形结构的统一处理
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Component接口 + Leaf类 + Composite类（容器）+ 统一操作
+ * 评测要点：
+ *   - 结构：Component类, Leaf类, Composite类, 子节点管理
+ *   - 行为：展示树形结构、叶子节点、组合节点、统一处理
+ *   - 输出：包含 "Composite", "tree", "leaf", "group", "uniform" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/composite.cpp
  */

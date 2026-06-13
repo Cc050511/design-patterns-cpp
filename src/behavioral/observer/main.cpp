@@ -1,11 +1,11 @@
 /**
  * Observer — 一对多的依赖通知
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Subject接口 + Observer接口 + 具体主题 + 具体观察者
+ * 评测要点：
+ *   - 结构：Subject类, Observer类, attach/detach方法, notify方法
+ *   - 行为：展示注册观察者、状态变化、通知更新、一对多通知
+ *   - 输出：包含 "Observer", "attach", "state", "notify", "multiple" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/observer.cpp
  */

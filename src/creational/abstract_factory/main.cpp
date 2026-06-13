@@ -1,11 +1,11 @@
 /**
  * Abstract Factory — 创建一族相关对象
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：多个产品接口 + 工厂接口 + 具体产品族 + 具体工厂
+ * 评测要点：
+ *   - 结构：Factory类, Product类, 多个virtual create*方法
+ *   - 行为：展示创建过程、产品族关系、不同工厂
+ *   - 输出：包含 "Abstract Factory", "family", "create", "different" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/abstract_factory.cpp
  */

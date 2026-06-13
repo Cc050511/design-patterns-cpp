@@ -1,11 +1,11 @@
 /**
  * Singleton — 全局唯一实例，禁止拷贝，延迟初始化
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：一个类，全局唯一实例，禁止拷贝/构造，提供静态访问方法
+ * 评测要点：
+ *   - 结构：class Singleton, static instance(), delete copy, private constructor
+ *   - 行为：获取实例、验证地址相同、展示延迟初始化
+ *   - 输出：包含 "Singleton"、"instance"、"same"、"construct" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/singleton.cpp
  */

@@ -1,11 +1,11 @@
 /**
  * Builder — 分步骤构建复杂对象
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Product类 + Builder接口 + Director类 + 具体Builder
+ * 评测要点：
+ *   - 结构：Builder类, Director类, buildPart*方法, 链式调用
+ *   - 行为：展示构建步骤、Director协调、不同产品配置
+ *   - 输出：包含 "Builder", "build", "step", "Director", "different" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/builder.cpp
  */

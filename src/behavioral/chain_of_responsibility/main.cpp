@@ -1,11 +1,11 @@
 /**
  * Chain of Responsibility — 请求沿链传递
  *
- * 实现要求：
- * 1. 设计并实现此设计模式的完整结构
- * 2. 在 main() 中演示该模式的核心交互
- * 3. 输出需包含模式名称，展示关键行为
- *
+ * 核心结构：Handler抽象类 + 具体处理者 + setNext链式连接
+ * 评测要点：
+ *   - 结构：Handler类, 下一处理者, 处理方法, 链式结构
+ *   - 行为：展示请求传递、处理过程、不同处理者
+ *   - 输出：包含 "Chain of Responsibility", "chain", "handle", "different" 等关键词
  * 评测：python3 scripts/evaluate.py build src
  * 参考：.reference/chain_of_responsibility.cpp
  */
