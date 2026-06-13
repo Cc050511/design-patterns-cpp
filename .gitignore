@@ -11,3 +11,9 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+# Generated files
+evaluation_report.md
+
+# System directories
+.sisyphus/
