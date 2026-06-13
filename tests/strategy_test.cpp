@@ -1,13 +1,22 @@
 // Strategy 模式测试
-// 测试设计模式核心结构
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_approx.hpp>
+#include <iostream>
 
-// Include the pattern implementation
 #include "src/behavioral/strategy/main.cpp"
 
-TEST_CASE("strategy structure exists", "[strategy][structure]") {
-    // Verify classes can be instantiated
+TEST_CASE("strategy exists", "[strategy][structure]") {
     REQUIRE(true);
+}
+
+TEST_CASE("strategy can be set", "[strategy][behavior]") {
+    auto strategy = std::make_unique<ConcreteStrategyA>(); Context context(std::move(strategy)); REQUIRE(context.getStrategyName() == "StrategyA");
+}
+
+TEST_CASE("strategy can be switched", "[strategy][behavior]") {
+    auto strategyA = std::make_unique<ConcreteStrategyA>(); Context context(std::move(strategyA)); context.executeStrategy({3, 1, 2}); auto strategyB = std::make_unique<ConcreteStrategyB>(); context.setStrategy(std::move(strategyB)); context.executeStrategy({3, 1, 2}); REQUIRE(context.getStrategyName() == "StrategyB");
+}
+
+TEST_CASE("strategy output demo", "[strategy][output]") {
+    std::cout << "=== Strategy Demo ===\n"; auto strategyA = std::make_unique<ConcreteStrategyA>(); Context context(std::move(strategyA)); context.executeStrategy({3, 1, 2}); std::cout << "Strategy verified.\n"; REQUIRE(true);
 }

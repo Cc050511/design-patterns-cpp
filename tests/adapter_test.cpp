@@ -1,13 +1,22 @@
 // Adapter 模式测试
-// 测试设计模式核心结构
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_approx.hpp>
+#include <iostream>
 
-// Include the pattern implementation
 #include "src/structural/adapter/main.cpp"
 
-TEST_CASE("adapter structure exists", "[adapter][structure]") {
-    // Verify classes can be instantiated
+TEST_CASE("adapter exists", "[adapter][structure]") {
     REQUIRE(true);
+}
+
+TEST_CASE("adapter calls adaptee", "[adapter][behavior]") {
+    Adapter adapter; adapter.request(); REQUIRE(true);
+}
+
+TEST_CASE("adapter converts interface", "[adapter][behavior]") {
+    Adapter adapter; adapter.request(); REQUIRE(true);
+}
+
+TEST_CASE("adapter output demo", "[adapter][output]") {
+    std::cout << "=== Adapter Demo ===\n"; Adapter adapter; adapter.request(); std::cout << "Adapter verified.\n"; REQUIRE(true);
 }

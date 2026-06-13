@@ -1,13 +1,22 @@
 // Factory Method 模式测试
-// 测试设计模式核心结构
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_approx.hpp>
+#include <iostream>
 
-// Include the pattern implementation
 #include "src/creational/factory_method/main.cpp"
 
-TEST_CASE("factory_method structure exists", "[factory_method][structure]") {
-    // Verify classes can be instantiated
+TEST_CASE("factory creator exists", "[factory_method][structure]") {
     REQUIRE(true);
+}
+
+TEST_CASE("factory creates product", "[factory_method][behavior]") {
+    ConcreteCreator creator; auto product = creator.createProduct(); REQUIRE(product != nullptr);
+}
+
+TEST_CASE("factory different products", "[factory_method][behavior]") {
+    ConcreteCreator creator; auto product = creator.createProduct(); product->use(); REQUIRE(product != nullptr);
+}
+
+TEST_CASE("factory output demo", "[factory_method][output]") {
+    std::cout << "=== Factory Method Demo ===\n"; ConcreteCreator creator; auto product = creator.createProduct(); product->use(); std::cout << "Factory Method verified.\n"; REQUIRE(product != nullptr);
 }

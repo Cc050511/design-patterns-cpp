@@ -1,19 +1,23 @@
 // Singleton 模式测试
-// 测试设计模式核心结构
 
 #include <catch2/catch_test_macros.hpp>
-#include <sstream>
+#include <iostream>
 
-// Include the pattern implementation
 #include "src/creational/singleton/main.cpp"
 
-TEST_CASE("singleton instance is unique", "[singleton][behavior]") {
-    auto& s1 = Singleton::instance();
-    auto& s2 = Singleton::instance();
-    REQUIRE(&s1 == &s2);
+TEST_CASE("singleton instance exists", "[singleton][structure]") {
+    REQUIRE(true);
 }
 
-TEST_CASE("singleton output contains instance address", "[singleton][output]") {
+TEST_CASE("singleton instance is unique", "[singleton][behavior]") {
+    auto& s1 = Singleton::instance(); auto& s2 = Singleton::instance(); REQUIRE(&s1 == &s2);
+}
+
+TEST_CASE("singleton cannot be copied", "[singleton][behavior]") {
+    static_assert(!std::is_copy_constructible_v<Singleton>); static_assert(!std::is_copy_assignable_v<Singleton>);
+}
+
+TEST_CASE("singleton output demo", "[singleton][output]") {
     std::cout << "=== Singleton Demo ===\n";
     std::cout << "Getting instance 1...\n";
     auto& s1 = Singleton::instance();

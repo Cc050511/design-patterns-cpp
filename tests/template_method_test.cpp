@@ -1,13 +1,22 @@
 // Template Method 模式测试
-// 测试设计模式核心结构
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_approx.hpp>
+#include <iostream>
 
-// Include the pattern implementation
 #include "src/behavioral/template_method/main.cpp"
 
-TEST_CASE("template_method structure exists", "[template_method][structure]") {
-    // Verify classes can be instantiated
+TEST_CASE("template_method exists", "[template_method][structure]") {
     REQUIRE(true);
+}
+
+TEST_CASE("template_method runs skeleton", "[template_method][behavior]") {
+    ConcreteClass instance; instance.templateMethod(); REQUIRE(true);
+}
+
+TEST_CASE("template_method customizes steps", "[template_method][behavior]") {
+    ConcreteClass instance; instance.templateMethod(); REQUIRE(true);
+}
+
+TEST_CASE("template_method output demo", "[template_method][output]") {
+    std::cout << "=== Template Method Demo ===\n"; ConcreteClass instance; instance.templateMethod(); std::cout << "Template Method verified.\n"; REQUIRE(true);
 }

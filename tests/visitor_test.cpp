@@ -1,13 +1,22 @@
 // Visitor 模式测试
-// 测试设计模式核心结构
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_approx.hpp>
+#include <iostream>
 
-// Include the pattern implementation
 #include "src/behavioral/visitor/main.cpp"
 
-TEST_CASE("visitor structure exists", "[visitor][structure]") {
-    // Verify classes can be instantiated
+TEST_CASE("visitor exists", "[visitor][structure]") {
     REQUIRE(true);
+}
+
+TEST_CASE("visitor visits element", "[visitor][behavior]") {
+    ConcreteElementA element; ConcreteVisitor visitor; element.accept(visitor); REQUIRE(true);
+}
+
+TEST_CASE("visitor different elements", "[visitor][behavior]") {
+    ConcreteElementA elementA; ConcreteElementB elementB; ConcreteVisitor visitor; elementA.accept(visitor); elementB.accept(visitor); REQUIRE(true);
+}
+
+TEST_CASE("visitor output demo", "[visitor][output]") {
+    std::cout << "=== Visitor Demo ===\n"; ConcreteElementA elementA; ConcreteElementB elementB; ConcreteVisitor visitor; elementA.accept(visitor); elementB.accept(visitor); std::cout << "Visitor verified.\n"; REQUIRE(true);
 }

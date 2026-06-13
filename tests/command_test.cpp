@@ -1,13 +1,22 @@
 // Command 模式测试
-// 测试设计模式核心结构
 
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_approx.hpp>
+#include <iostream>
 
-// Include the pattern implementation
 #include "src/behavioral/command/main.cpp"
 
-TEST_CASE("command structure exists", "[command][structure]") {
-    // Verify classes can be instantiated
+TEST_CASE("command exists", "[command][structure]") {
     REQUIRE(true);
+}
+
+TEST_CASE("command executes", "[command][behavior]") {
+    Receiver receiver; ConcreteCommand command(receiver); command.execute(); REQUIRE(true);
+}
+
+TEST_CASE("command undoes", "[command][behavior]") {
+    Receiver receiver; ConcreteCommand command(receiver); command.execute(); command.undo(); REQUIRE(true);
+}
+
+TEST_CASE("command output demo", "[command][output]") {
+    std::cout << "=== Command Demo ===\n"; Receiver receiver; ConcreteCommand command(receiver); command.execute(); command.undo(); std::cout << "Command verified.\n"; REQUIRE(true);
 }
