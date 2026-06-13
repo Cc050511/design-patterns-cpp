@@ -31,7 +31,7 @@ jobs:
         run: |
           pacman-key --init && pacman-key --populate
           pacman -Sy --noconfirm \
-            base-devel cmake ninja gcc clang
+            base-devel cmake ninja gcc clang git
 
       - name: Configure
         env:
