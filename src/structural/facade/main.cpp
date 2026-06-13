@@ -1,44 +1,17 @@
 /**
- * Facade — 简化复杂子系统的接口
- * 意图: 简化复杂子系统的接口
+ * Facade — 模式意图
+ * 意图: 请实现此设计模式
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/facade.cpp
  */
 
 #include <iostream>
 
-// TODO: 完成以下类实现
-
-class SubsystemA {
-public:
-    void operationA() const {
-        // TODO: Implement subsystem A operation
-    }
-};
-
-class SubsystemB {
-public:
-    void operationB() const {
-        // TODO: Implement subsystem B operation
-    }
-};
-
-class Facade {
-public:
-    void simplifiedOperation() const {
-        // TODO: Coordinate subsystems
-        subsystemA_.operationA();
-        subsystemB_.operationB();
-    }
-private:
-    SubsystemA subsystemA_;
-    SubsystemB subsystemB_;
-};
-
+// TODO: 实现此设计模式的所有类
 
 int main() {
     std::cout << "=== Facade Demo ===\n";
-    // TODO: Demonstrate Facade pattern
+    // TODO: 创建对象并演示设计模式
     std::cout << "Facade verified successfully.\n";
     return 0;
 }

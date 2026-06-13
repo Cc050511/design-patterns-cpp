@@ -1,6 +1,6 @@
 /**
- * Adapter — 转换接口以兼容
- * 意图: 转换接口以兼容
+ * Adapter — 模式意图
+ * 意图: 请实现此设计模式
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/adapter.cpp
  */
@@ -8,35 +8,11 @@
 #include <memory>
 #include <iostream>
 
-// TODO: 完成以下类实现
-
-class Target {
-public:
-    virtual ~Target() = default;
-    virtual void request() const = 0;
-};
-
-class Adaptee {
-public:
-    void specificRequest() const {
-        // TODO: Implement specific request
-    }
-};
-
-class Adapter : public Target {
-public:
-    void request() const override {
-        // TODO: Adapt Adaptee's interface to Target
-        adaptee_.specificRequest();
-    }
-private:
-    Adaptee adaptee_;
-};
-
+// TODO: 实现此设计模式的所有类
 
 int main() {
     std::cout << "=== Adapter Demo ===\n";
-    // TODO: Demonstrate Adapter pattern
+    // TODO: 创建对象并演示设计模式
     std::cout << "Adapter verified successfully.\n";
     return 0;
 }

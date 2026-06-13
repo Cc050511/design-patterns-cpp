@@ -1,6 +1,6 @@
 /**
- * Strategy — 算法族，可互换
- * 意图: 算法族，可互换
+ * Strategy — 模式意图
+ * 意图: 请实现此设计模式
  * 评测: python3 scripts/evaluate.py build src
  * 参考: .reference/strategy.cpp
  */
@@ -10,53 +10,11 @@
 #include <string>
 #include <iostream>
 
-// TODO: 完成以下类实现
-
-class Strategy {
-public:
-    virtual ~Strategy() = default;
-    virtual void execute(const std::vector<int>& data) const = 0;
-    virtual std::string getName() const = 0;
-};
-
-class ConcreteStrategyA : public Strategy {
-public:
-    void execute(const std::vector<int>& data) const override {
-        // TODO: Implement algorithm A
-    }
-    std::string getName() const override { return "StrategyA"; }
-};
-
-class ConcreteStrategyB : public Strategy {
-public:
-    void execute(const std::vector<int>& data) const override {
-        // TODO: Implement algorithm B
-    }
-    std::string getName() const override { return "StrategyB"; }
-};
-
-class Context {
-public:
-    explicit Context(std::unique_ptr<Strategy> strategy) : strategy_(std::move(strategy)) {}
-    void setStrategy(std::unique_ptr<Strategy> strategy) {
-        strategy_ = std::move(strategy);
-    }
-    void executeStrategy(const std::vector<int>& data) const {
-        if (strategy_) {
-            strategy_->execute(data);
-        }
-    }
-    std::string getStrategyName() const {
-        return strategy_ ? strategy_->getName() : "none";
-    }
-private:
-    std::unique_ptr<Strategy> strategy_;
-};
-
+// TODO: 实现此设计模式的所有类
 
 int main() {
     std::cout << "=== Strategy Demo ===\n";
-    // TODO: Demonstrate Strategy pattern
+    // TODO: 创建对象并演示设计模式
     std::cout << "Strategy verified successfully.\n";
     return 0;
 }
