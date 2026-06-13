@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <string>
-
 /**
  * Decorator — 装饰器模式
  * ========================
@@ -25,6 +21,10 @@
  *   Component (Beverage) ← ConcreteComponent (Espresso), Decorator (CondimentDecorator)
  *   ConcreteDecorator (Milk, Mocha, Whip)
  */
+
+#include <iostream>
+#include <memory>
+#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <string>
-
 /**
  * Prototype — 原型模式
  * ======================
@@ -23,6 +19,10 @@
  *   Prototype (Shape) ← ConcretePrototype (Circle, Rectangle)
  *   PrototypeRegistry — 存储 & 查找原型
  */
+
+#include <iostream>
+#include <memory>
+#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

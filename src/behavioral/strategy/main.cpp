@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <vector>
-
 /**
  * Strategy — 策略模式
  * =====================
@@ -27,6 +23,10 @@
  *
  * 与 State 的区别: 见 state/main.cpp 头部注释
  */
+
+#include <iostream>
+#include <memory>
+#include <vector>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

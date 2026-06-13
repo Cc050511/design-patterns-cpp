@@ -1,6 +1,3 @@
-#include <iostream>
-#include <memory>
-
 /**
  * Abstract Factory — 抽象工厂模式
  * =================================
@@ -16,6 +13,9 @@
  *   AbstractFactory (GUIFactory)  ← ConcreteFactory (WinFactory, MacFactory)
  *   AbstractProduct (Button, Checkbox) ← ConcreteProduct (WinButton, MacCheckbox…)
  */
+
+#include <iostream>
+#include <memory>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

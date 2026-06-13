@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <vector>
-
 /**
  * Visitor — 访问者模式
  * ======================
@@ -27,6 +23,10 @@
  *   Element (Shape) ← ConcreteElement (Circle, Rectangle)
  *   ObjectStructure — 持有 vector<Shape*>
  */
+
+#include <iostream>
+#include <memory>
+#include <vector>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

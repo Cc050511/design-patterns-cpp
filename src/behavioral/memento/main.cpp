@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <string>
-
 /**
  * Memento — 备忘录模式
  * ======================
@@ -19,6 +15,10 @@
  *   Memento (EditorState) — 快照
  *   Caretaker (History) — 管理快照的栈
  */
+
+#include <iostream>
+#include <memory>
+#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

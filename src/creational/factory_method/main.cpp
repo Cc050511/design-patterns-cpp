@@ -1,6 +1,3 @@
-#include <iostream>
-#include <memory>
-
 /**
  * Factory Method — 工厂方法模式
  * ==============================
@@ -17,6 +14,9 @@
  *   Product (Button) ← ConcreteProduct (WinButton, MacButton)
  *   Creator (Dialog)  ← ConcreteCreator (WinDialog, MacDialog)
  */
+
+#include <iostream>
+#include <memory>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

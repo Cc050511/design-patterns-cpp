@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <string>
-
 /**
  * State — 状态模式
  * ==================
@@ -29,6 +25,10 @@
  *   - State: 状态由内部驱动，各状态之间互相知道，可自行转换
  *   - Strategy: 策略由外部注入，各策略之间互不相知
  */
+
+#include <iostream>
+#include <memory>
+#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

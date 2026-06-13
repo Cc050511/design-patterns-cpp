@@ -1,8 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <string>
-#include <unordered_map>
-
 /**
  * Flyweight — 享元模式
  * ======================
@@ -26,6 +21,11 @@
  *   FlyweightFactory (GlyphFactory)
  *   Context — 持有外在状态
  */
+
+#include <iostream>
+#include <memory>
+#include <string>
+#include <unordered_map>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

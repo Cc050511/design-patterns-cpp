@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <string>
-
 /**
  * Iterator — 迭代器模式
  * ========================
@@ -23,6 +19,10 @@
  *   Aggregate (自定义容器) ← ConcreteAggregate (如 LinkedList<T>)
  *   Iterator — 封装遍历逻辑
  */
+
+#include <iostream>
+#include <memory>
+#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)

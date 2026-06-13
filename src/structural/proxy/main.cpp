@@ -1,7 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <string>
-
 /**
  * Proxy — 代理模式
  * ==================
@@ -20,6 +16,10 @@
  * 参考角色:
  *   Subject (Image) ← RealSubject (RealImage), Proxy (LazyImageProxy)
  */
+
+#include <iostream>
+#include <memory>
+#include <string>
 
 // ============================================
 // 评测检查清单 (Evaluation Checklist)
