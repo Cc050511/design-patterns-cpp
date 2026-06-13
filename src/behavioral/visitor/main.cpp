@@ -28,6 +28,30 @@
 #include <memory>
 #include <vector>
 
+// ============================================
+// 评测检查清单 (Evaluation Checklist)
+// ============================================
+// 完成本模式后，你的实现应该展示：
+//
+// 结构要求 (必须包含以下类/接口):
+//   ✓ Visitor 接口 (visit 方法)
+//   ✓ Element 接口 (accept 方法)
+//   ✓ ConcreteVisitor 和 ConcreteElement
+//
+// 行为要求 (运行时输出应展示):
+//   ✓ 展示双重分发
+//   ✓ 展示对元素执行新操作
+//   ✓ 展示不改变元素类
+//
+// 输出要求:
+//   ✓ 输出应包含模式名称: "=== {Pattern} Demo ==="
+//   ✓ 输出至少 5 行非空内容
+//   ✓ 输出不应包含 "TODO"
+//
+// 参考实现: .reference/{pattern_name}.cpp
+// 评测命令: python3 scripts/evaluate.py build src
+// ============================================
+
 // TODO: 实现你的 Visitor
 
 int main() {

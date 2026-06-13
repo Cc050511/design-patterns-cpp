@@ -18,6 +18,30 @@
 #include <iostream>
 #include <string>
 
+// ============================================
+// 评测检查清单 (Evaluation Checklist)
+// ============================================
+// 完成本模式后，你的实现应该展示：
+//
+// 结构要求 (必须包含以下类/接口):
+//   ✓ Facade 类 (简化接口)
+//   ✓ 多个 Subsystem 复杂类
+//   ✓ Facade 委托调用 Subsystem
+//
+// 行为要求 (运行时输出应展示):
+//   ✓ 展示 Facade 简化调用
+//   ✓ 展示复杂子系统内部交互
+//   ✓ 展示客户端只依赖 Facade
+//
+// 输出要求:
+//   ✓ 输出应包含模式名称: "=== {Pattern} Demo ==="
+//   ✓ 输出至少 5 行非空内容
+//   ✓ 输出不应包含 "TODO"
+//
+// 参考实现: .reference/{pattern_name}.cpp
+// 评测命令: python3 scripts/evaluate.py build src
+// ============================================
+
 // TODO: 实现你的 Facade
 
 int main() {

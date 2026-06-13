@@ -28,6 +28,30 @@
 #include <string>
 #include <vector>
 
+// ============================================
+// 评测检查清单 (Evaluation Checklist)
+// ============================================
+// 完成本模式后，你的实现应该展示：
+//
+// 结构要求 (必须包含以下类/接口):
+//   ✓ Mediator 接口 (notify 方法)
+//   ✓ ConcreteMediator 协调者
+//   ✓ Colleague 同事类
+//
+// 行为要求 (运行时输出应展示):
+//   ✓ 展示集中协调对象交互
+//   ✓ 展示对象间不直接引用
+//   ✓ 展示解耦效果
+//
+// 输出要求:
+//   ✓ 输出应包含模式名称: "=== {Pattern} Demo ==="
+//   ✓ 输出至少 5 行非空内容
+//   ✓ 输出不应包含 "TODO"
+//
+// 参考实现: .reference/{pattern_name}.cpp
+// 评测命令: python3 scripts/evaluate.py build src
+// ============================================
+
 // TODO: 实现你的 Mediator
 
 int main() {
