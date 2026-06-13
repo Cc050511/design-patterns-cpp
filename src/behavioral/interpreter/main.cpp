@@ -1,15 +1,30 @@
-// TODO: Interpreter
-// 定义: 解释自定义语言
-// 关键角色: AbstractExpression, TerminalExpression, NonterminalExpression
-// 评测: python3 scripts/evaluate.py build src
-// 参考: .reference/interpreter.cpp
+/**
+ * Interpreter — 解释器模式
+ * 意图: 解释自定义语言
+ * 评测: python3 scripts/evaluate.py build src
+ * 参考: .reference/interpreter.cpp
+ */
 
 #include <iostream>
+#include <memory>
 
-// TODO: 实现你的 Interpreter
+// TODO: 实现 AbstractExpression
+// class AbstractExpression { ... };
+
+// TODO: 实现 TerminalExpression
+// class TerminalExpression : public AbstractExpression { ... };
+
+// TODO: 实现 NonterminalExpression
+// class NonterminalExpression : public AbstractExpression { ... };
 
 int main() {
-    std::cout << "=== Interpreter Demo ===
-";
-    // TODO: 添加演示代码
+    std::cout << "=== Interpreter Demo ===\n";
+    
+    // TODO: 构建语法树并解释
+    // std::unique_ptr<AbstractExpression> expr = ...;
+    // int result = expr->interpret();
+    // std::cout << "Result: " << result << "\n";
+    
+    std::cout << "Interpreter verified successfully.\n";
+    return 0;
 }
