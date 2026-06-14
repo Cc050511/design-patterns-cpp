@@ -15,19 +15,22 @@ cd build && ctest --output-on-failure
 
 Requires C++23 (GCC 13+, Clang 17+). `CMAKE_CXX_STANDARD` is set to 23 in root `CMakeLists.txt`.
 
+CI uses Ninja: `cmake -B build -G Ninja -DBUILD_TESTS=ON`. Local builds default to Make.
+
 ## Evaluation
 
 ```bash
 python3 scripts/evaluate.py build src
 ```
 
-4-layer scoring per pattern (0-100, pass >= 75):
+5-layer scoring per pattern (0-100, pass >= 75):
 - Compilation (10): binary exists in `build/`
-- Structure (25): regex match in `main.cpp` (e.g. `class\+\w*Singleton`)
+- Structure (25): regex match in `main.cpp` (e.g. `class\s+\w*Singleton`)
 - Behavior (45): runtime output contains expected keywords
+- Output quality (10): min 5 lines, required keywords present, no `TODO`
 - Reference (10): output similarity vs `.reference/{pattern}.cpp`
 
-Criteria defined in `scripts/evaluation_criteria.json`. Output must NOT contain `TODO`.
+Criteria defined in `scripts/evaluation_criteria.json`. Reference comparison runs from repo root — evaluate.py uses relative paths.
 
 ## Architecture Traps
 
@@ -38,6 +41,10 @@ Criteria defined in `scripts/evaluation_criteria.json`. Output must NOT contain 
 3. **Template headers contain keywords**: `verify_structure.sh` grep-matches keywords like `Observer|Subject|attach` against template files. The headers (block comments) intentionally contain these keywords so empty templates pass structure checks. Don't remove them.
 
 4. **CI has `continue-on-error` on all verification steps**: Structure, runtime, and evaluation steps don't block CI. Only "build" and "verify binaries exist" are blocking. This is intentional — empty templates can't pass behavior/output checks.
+
+5. **Underscore→space in output**: `verify_runtime.sh` converts underscores to spaces when checking output. `chain_of_responsibility` must output "chain of responsibility" (with spaces), not "chain_of_responsibility".
+
+6. **Catch2 via FetchContent**: First build downloads Catch2 v3.5.0 from GitHub. No offline build possible without pre-fetching.
 
 ## Directory Layout
 
